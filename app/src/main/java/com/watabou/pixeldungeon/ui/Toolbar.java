@@ -25,6 +25,7 @@ import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Heap;
@@ -65,6 +66,8 @@ public class Toolbar extends Component {
 		instance = this;
 		
 		height = btnInventory.height();
+
+		btnQuick2.active = btnQuick2.visible = PixelDungeon.secondQuickSlot();
 	}
 	
 	@Override
@@ -173,6 +176,7 @@ public class Toolbar extends Component {
 		instance.btnQuick2.active = 
 			value;
 		instance.layout();
+		PixelDungeon.secondQuickSlot( value );
 	}
 	
 	private static CellSelector.Listener informer = new CellSelector.Listener() {

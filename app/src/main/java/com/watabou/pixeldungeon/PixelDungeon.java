@@ -307,7 +307,15 @@ public class PixelDungeon extends Game {
 	public static boolean soundFx() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_SOUND_FX, true );
 	}
-	
+
+	public static void secondQuickSlot(boolean value) {
+		Preferences.INSTANCE.put( Preferences.KEY_SECOND_QUICKSLOT, value );
+	}
+
+	public static boolean secondQuickSlot() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_SECOND_QUICKSLOT, false );
+	}
+
 	public static void nightModeDisabled(boolean value) {
 		Preferences.INSTANCE.put( Preferences.KEY_NIGHT_MODE, value );
 	}
