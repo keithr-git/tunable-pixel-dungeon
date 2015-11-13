@@ -104,6 +104,11 @@ public class Ring extends EquipableItem {
 	
 	public Ring() {
 		super();
+
+		if (PixelDungeon.autoIdentify()) {
+			identify();
+		}
+
 		syncGem();
 	}
 	

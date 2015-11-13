@@ -24,6 +24,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.effects.Splash;
 import com.watabou.pixeldungeon.items.Item;
@@ -108,6 +109,11 @@ public class Potion extends Item {
 	
 	public Potion() {
 		super();
+
+		if (PixelDungeon.autoIdentify()) {
+			identify();
+		}
+
 		image = handler.image( this );
 		color = handler.label( this );
 	}

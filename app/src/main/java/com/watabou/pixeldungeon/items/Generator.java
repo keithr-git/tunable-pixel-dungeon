@@ -20,6 +20,7 @@ package com.watabou.pixeldungeon.items;
 import java.util.HashMap;
 
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.armor.*;
 import com.watabou.pixeldungeon.items.bags.Bag;
@@ -196,6 +197,12 @@ public class Generator {
 	public static void reset() {
 		for (Category cat : Category.values()) {
 			categoryProbs.put( cat, cat.prob );
+		}
+
+		if (PixelDungeon.autoIdentify()) {
+			Category.SCROLL.probs[0] = 0;
+		} else {
+			Category.SCROLL.probs[0] = 30;
 		}
 	}
 	

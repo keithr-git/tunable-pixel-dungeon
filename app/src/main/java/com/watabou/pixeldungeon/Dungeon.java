@@ -253,7 +253,11 @@ public class Dungeon {
 	@SuppressWarnings("deprecation")
 	public static void switchLevel( final Level level, int pos ) {
 		
-		nightMode = new Date().getHours() < 7;
+                if (PixelDungeon.nightModeEnabled()) {
+                        nightMode = new Date().getHours() < 7;
+                } else {
+                        nightMode = false;
+                }
 		
 		Dungeon.level = level;
 		Actor.init();

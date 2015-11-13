@@ -31,12 +31,14 @@ enum Preferences {
 	public static final String KEY_SCALE_UP		= "scaleup";
 	public static final String KEY_MUSIC		= "music";
 	public static final String KEY_SOUND_FX		= "soundfx";
-	public static final String KEY_ZOOM			= "zoom";
+	public static final String KEY_ZOOM		= "zoom";
 	public static final String KEY_LAST_CLASS	= "last_class";
 	public static final String KEY_CHALLENGES	= "challenges";
 	public static final String KEY_DONATED		= "donated";
 	public static final String KEY_INTRO		= "intro";
 	public static final String KEY_BRIGHTNESS	= "brightness";
+	public static final String KEY_NIGHT_MODE	= "night_mode_enabled";
+	public static final String KEY_AUTO_IDENTIFY = "auto_identify";
 	
 	private SharedPreferences prefs;
 	

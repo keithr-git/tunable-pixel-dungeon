@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.watabou.pixeldungeon.Badges;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.buffs.Blindness;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.Item;
@@ -93,6 +94,11 @@ public abstract class Scroll extends Item {
 	
 	public Scroll() {
 		super();
+
+		if (PixelDungeon.autoIdentify()) {
+			identify();
+		}
+
 		image = handler.image( this );
 		rune = handler.label( this );
 	}

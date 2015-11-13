@@ -46,6 +46,9 @@ public class WndSettings extends Window {
 	
 	private static final String TXT_SWITCH_PORT	= "Switch to portrait";
 	private static final String TXT_SWITCH_LAND	= "Switch to landscape";
+
+	private static final String TXT_NIGHT_MODE      = "Enable Night Mode";
+	private static final String TXT_AUTO_IDENT      = "Auto-Identify Items";
 	
 	private static final int WIDTH		= 112;
 	private static final int BTN_HEIGHT	= 20;
@@ -164,7 +167,7 @@ public class WndSettings extends Window {
 			resize( WIDTH, (int)btnQuickslot.bottom() );
 			
 		} else {
-			
+
 			RedButton btnOrientation = new RedButton( orientationText() ) {
 				@Override
 				protected void onClick() {
@@ -173,8 +176,32 @@ public class WndSettings extends Window {
 			};
 			btnOrientation.setRect( 0, btnSound.bottom() + GAP, WIDTH, BTN_HEIGHT );
 			add( btnOrientation );
+
+			CheckBox btnNight = new CheckBox( TXT_NIGHT_MODE ) {
+					@Override
+					protected void onClick() {
+							super.onClick();
+							PixelDungeon.nightModeEnabled(checked());
+							Sample.INSTANCE.play( Assets.SND_CLICK );
+					}
+			};
+			btnNight.setRect(0, btnOrientation.bottom() + GAP, WIDTH, BTN_HEIGHT);
+			btnNight.checked(PixelDungeon.nightModeEnabled());
+			add( btnNight );
+
+			CheckBox btnAutoIdentify = new CheckBox( TXT_AUTO_IDENT ) {
+				@Override
+				protected void onClick() {
+					super.onClick();
+					PixelDungeon.autoIdentify(checked());
+					Sample.INSTANCE.play(Assets.SND_CLICK);
+				}
+			};
+			btnAutoIdentify.setRect(0, btnNight.bottom() + GAP, WIDTH, BTN_HEIGHT);
+			btnAutoIdentify.checked(PixelDungeon.autoIdentify());
+			add( btnAutoIdentify );
 			
-			resize( WIDTH, (int)btnOrientation.bottom() );
+			resize( WIDTH, (int)btnAutoIdentify.bottom() );
 			
 		}
 	}
