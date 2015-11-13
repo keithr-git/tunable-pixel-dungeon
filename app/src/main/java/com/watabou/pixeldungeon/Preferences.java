@@ -42,6 +42,8 @@ enum Preferences {
 	public static final String KEY_AUTO_IDENTIFY	= "auto_identify";
 	public static final String KEY_KEEP_ENCHANTMENTS = "keep_enchantments";
 	public static final String KEY_UPGRADE_SCROLLS	= "upgrade_scrolls";
+	public static final String KEY_FREE_SCROLLCASE	= "free_scrollcase";
+	public static final String KEY_FREE_SEED_POUCH	= "free_seed_pouch";
 	public static final String KEY_HUNGER_RATE	= "hunger_rate";
 	public static final String KEY_USE_RATE		= "use_rate";
 	public static final String KEY_TREASURE_AMOUNT	= "treasuer_amount";

@@ -348,6 +348,22 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_UPGRADE_SCROLLS, false );
 	}
 
+	public static void freeScrollCase( boolean value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_FREE_SCROLLCASE, value );
+	}
+
+	public static boolean freeScrollCase() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_SCROLLCASE, false );
+	}
+
+	public static void freeSeedPouch( boolean value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_FREE_SEED_POUCH, value );
+	}
+
+	public static boolean freeSeedPouch() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_SEED_POUCH, false );
+	}
+
 	public static void hungerRate( float value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_HUNGER_RATE, value );
 	}

@@ -19,9 +19,12 @@ package com.watabou.pixeldungeon.actors.hero;
 
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Badges;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.items.TomeOfMastery;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.bags.Keyring;
+import com.watabou.pixeldungeon.items.bags.ScrollHolder;
+import com.watabou.pixeldungeon.items.bags.SeedPouch;
 import com.watabou.pixeldungeon.items.food.Food;
 import com.watabou.pixeldungeon.items.potions.PotionOfStrength;
 import com.watabou.pixeldungeon.items.rings.RingOfShadows;
@@ -114,6 +117,14 @@ public enum HeroClass {
 		(hero.belongings.armor = new ClothArmor()).identify();
 		new Food().identify().collect();
 		new Keyring().collect();
+
+		if (PixelDungeon.freeScrollCase()) {
+			new ScrollHolder().collect();
+		}
+
+		if (PixelDungeon.freeSeedPouch()) {
+			new SeedPouch().collect();
+		}
 	}
 	
 	public Badges.Badge masteryBadge() {
