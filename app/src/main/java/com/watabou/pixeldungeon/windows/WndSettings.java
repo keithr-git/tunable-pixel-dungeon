@@ -186,7 +186,6 @@ public class WndSettings extends Window {
 			add( btnGameOptions );
 
 			resize( WIDTH, (int)btnGameOptions.bottom() );
-			
 		}
 	}
 	

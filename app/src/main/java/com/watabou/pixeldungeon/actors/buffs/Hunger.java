@@ -19,6 +19,7 @@ package com.watabou.pixeldungeon.actors.buffs;
 
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.ResultDescriptions;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
@@ -70,14 +71,14 @@ public class Hunger extends Buff implements Hero.Doom {
 					
 					hero.interrupt();
 				}
-			} else {	
+			} else {
 				
 				int bonus = 0;
 				for (Buff buff : target.buffs( RingOfSatiety.Satiety.class )) {
 					bonus += ((RingOfSatiety.Satiety)buff).level;
 				}
 				
-				float newLevel = level + STEP - bonus;
+				float newLevel = level + (STEP - bonus) * PixelDungeon.hungerRate();
 				boolean statusUpdated = false;
 				if (newLevel >= STARVING) {
 					
@@ -113,6 +114,10 @@ public class Hunger extends Buff implements Hero.Doom {
 	}
 	
 	public void satisfy( float energy ) {
+		if (energy < 0.0) {
+			energy *= PixelDungeon.hungerRate();
+		}
+
 		level -= energy;
 		if (level < 0) {
 			level = 0;

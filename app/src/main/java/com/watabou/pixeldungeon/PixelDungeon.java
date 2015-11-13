@@ -331,12 +331,21 @@ public class PixelDungeon extends Game {
 	public static boolean keepEnchantments() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_KEEP_ENCHANTMENTS, false );
 	}
+
 	public static void upgradeScrolls( boolean value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_UPGRADE_SCROLLS, value );
 	}
 
 	public static boolean upgradeScrolls() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_UPGRADE_SCROLLS, false );
+	}
+
+	public static void hungerRate( float value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_HUNGER_RATE, value );
+	}
+
+	public static float hungerRate() {
+		return Preferences.INSTANCE.getFloat( Preferences.KEY_HUNGER_RATE, 1.0F );
 	}
 
 	public static void brightness( boolean value ) {

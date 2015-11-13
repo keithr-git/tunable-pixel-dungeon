@@ -41,6 +41,7 @@ enum Preferences {
 	public static final String KEY_AUTO_IDENTIFY	= "auto_identify";
 	public static final String KEY_KEEP_ENCHANTMENTS = "keep_enchantments";
 	public static final String KEY_UPGRADE_SCROLLS	= "upgrade_scrolls";
+	public static final String KEY_HUNGER_RATE	= "hunger_rate";
 	
 	private SharedPreferences prefs;
 	
@@ -54,7 +55,11 @@ enum Preferences {
 	int getInt( String key, int defValue  ) {
 		return get().getInt( key, defValue );
 	}
-	
+
+	float getFloat( String key, float defValue ) {
+		return get().getFloat( key, defValue );
+	}
+
 	boolean getBoolean( String key, boolean defValue  ) {
 		return get().getBoolean( key, defValue );
 	}
@@ -62,9 +67,13 @@ enum Preferences {
 	String getString( String key, String defValue  ) {
 		return get().getString( key, defValue );
 	}
-	
+
 	void put( String key, int value ) {
 		get().edit().putInt( key, value ).commit();
+	}
+
+	void put( String key, float value ) {
+		get().edit().putFloat( key, value ).commit();
 	}
 	
 	void put( String key, boolean value ) {
