@@ -24,6 +24,7 @@ import java.util.List;
 
 import com.watabou.pixeldungeon.Bones;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.mobs.Bestiary;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
@@ -587,6 +588,8 @@ public abstract class RegularLevel extends Level {
 		while (Random.Float() < 0.4f) {
 			nItems++;
 		}
+
+		nItems *= PixelDungeon.treasureAmount();
 		
 		for (int i=0; i < nItems; i++) {
 			Heap.Type type = null;

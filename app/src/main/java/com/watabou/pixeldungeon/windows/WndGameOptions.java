@@ -17,6 +17,7 @@ public class WndGameOptions extends Window {
 	private static final String TXT_KEEP_ENCHANTMENT = "Keep Enchantments";
 	private static final String TXT_UPGRADE_SCROLLS	= "Random Upgrade Scrolls";
 	private static final String TXT_HUNGER_RATE	= "Hunger Rate:    ";
+	private static final String TXT_TREASURE_AMOUNT	= "Treasure Amount:";
 
 	private static final String TXT_RESET_DEFAULTS	= "Reset to Defaults";
 
@@ -73,6 +74,10 @@ public class WndGameOptions extends Window {
 
 		void updateLabel(float value) {
 			btnLabel.text( prefix + String.format( " %4.1f",  value ) );
+		}
+
+		void updateLabel() {
+			updateLabel( getValue() );
 		}
 
 		float getValue() {
@@ -148,6 +153,18 @@ public class WndGameOptions extends Window {
 			}
 		};
 
+		final FloatValue btnTreasureAmount = new FloatValue( this, btnHungerRate.bottom() + GAP, TXT_TREASURE_AMOUNT ) {
+			@Override
+			float getValue() {
+				return PixelDungeon.treasureAmount();
+			}
+
+			@Override
+			void setValue( float value ) {
+				PixelDungeon.treasureAmount( value );
+			}
+		};
+
 		RedButton btnResetToDefaults = new RedButton( TXT_RESET_DEFAULTS ) {
 			@Override
 			protected void onClick() {
@@ -156,14 +173,17 @@ public class WndGameOptions extends Window {
 				PixelDungeon.keepEnchantments( false );
 				PixelDungeon.upgradeScrolls( false );
 				PixelDungeon.hungerRate( 1.0F );
+				PixelDungeon.treasureAmount( 1.0F );
+
 				btnNightMode.checked( PixelDungeon.nightModeDisabled() );
 				btnAutoIdentify.checked( PixelDungeon.autoIdentify() );
 				btnKeepEnchantments.checked( PixelDungeon.keepEnchantments() );
 				btnUpgradeScrolls.checked( PixelDungeon.upgradeScrolls() );
-				btnHungerRate.updateLabel( 1.0F );
+				btnHungerRate.updateLabel();
+				btnTreasureAmount.updateLabel();
 			}
 		};
-		btnResetToDefaults.setRect( 0, btnHungerRate.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnResetToDefaults.setRect( 0, btnTreasureAmount.bottom() + GAP, WIDTH, BTN_HEIGHT );
 		add( btnResetToDefaults );
 
 		resize( WIDTH, (int) btnResetToDefaults.bottom() );

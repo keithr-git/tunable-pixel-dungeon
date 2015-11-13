@@ -348,6 +348,14 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getFloat( Preferences.KEY_HUNGER_RATE, 1.0F );
 	}
 
+	public static void treasureAmount(float value) {
+		Preferences.INSTANCE.put( Preferences.KEY_TREASURE_AMOUNT, value );
+	}
+
+	public static float treasureAmount() {
+		return Preferences.INSTANCE.getFloat( Preferences.KEY_TREASURE_AMOUNT, 1.0F );
+	}
+
 	public static void brightness( boolean value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_BRIGHTNESS, value );
 		if (scene() instanceof GameScene) {
