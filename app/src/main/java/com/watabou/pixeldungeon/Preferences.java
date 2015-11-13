@@ -42,8 +42,9 @@ enum Preferences {
 	public static final String KEY_KEEP_ENCHANTMENTS = "keep_enchantments";
 	public static final String KEY_UPGRADE_SCROLLS	= "upgrade_scrolls";
 	public static final String KEY_HUNGER_RATE	= "hunger_rate";
+	public static final String KEY_USE_RATE		= "use_rate";
 	public static final String KEY_TREASURE_AMOUNT	= "treasuer_amount";
-	
+
 	private SharedPreferences prefs;
 	
 	private SharedPreferences get() {

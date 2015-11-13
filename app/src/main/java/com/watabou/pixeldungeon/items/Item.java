@@ -83,7 +83,7 @@ public class Item implements Bundlable {
 	protected int quantity = 1;
 	
 	private int level = 0;
-	private int durability = maxDurability();
+	private float durability = maxDurability();
 	public boolean levelKnown = false;
 	
 	public boolean cursed;
@@ -307,7 +307,7 @@ public class Item implements Bundlable {
 	public void use() {
 		if (level > 0 && !isBroken()) {
 			int threshold = (int)(maxDurability() * DURABILITY_WARNING_LEVEL);
-			if (durability-- >= threshold && threshold > durability && levelKnown) {
+			if ((durability -= PixelDungeon.useRate()) >= threshold && threshold > durability && levelKnown) {
 				GLog.w( TXT_GONNA_BREAK, name() );
 			}
 			if (isBroken()) {
@@ -350,7 +350,7 @@ public class Item implements Bundlable {
 		}
 	}
 	
-	public int durability() {
+	public float durability() {
 		return durability;
 	}
 	

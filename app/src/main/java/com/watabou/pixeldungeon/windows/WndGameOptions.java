@@ -17,6 +17,7 @@ public class WndGameOptions extends Window {
 	private static final String TXT_KEEP_ENCHANTMENT = "Keep Enchantments";
 	private static final String TXT_UPGRADE_SCROLLS	= "Random Upgrade Scrolls";
 	private static final String TXT_HUNGER_RATE	= "Hunger Rate:    ";
+	private static final String TXT_USE_RATE	= "Use Rate:       ";
 	private static final String TXT_TREASURE_AMOUNT	= "Treasure Amount:";
 
 	private static final String TXT_RESET_DEFAULTS	= "Reset to Defaults";
@@ -73,7 +74,7 @@ public class WndGameOptions extends Window {
 		}
 
 		void updateLabel(float value) {
-			btnLabel.text( prefix + String.format( " %4.1f",  value ) );
+			btnLabel.text( prefix + String.format( " %4.1f", value ) );
 		}
 
 		void updateLabel() {
@@ -153,7 +154,20 @@ public class WndGameOptions extends Window {
 			}
 		};
 
-		final FloatValue btnTreasureAmount = new FloatValue( this, btnHungerRate.bottom() + GAP, TXT_TREASURE_AMOUNT ) {
+		final FloatValue btnUseRate = new FloatValue( this, btnHungerRate.bottom() + GAP, TXT_USE_RATE ) {
+			@Override
+			float getValue() {
+				return PixelDungeon.useRate();
+			}
+
+			@Override
+			void setValue( float value ) {
+				PixelDungeon.useRate( value );
+			}
+		};
+
+
+		final FloatValue btnTreasureAmount = new FloatValue( this, btnUseRate.bottom() + GAP, TXT_TREASURE_AMOUNT ) {
 			@Override
 			float getValue() {
 				return PixelDungeon.treasureAmount();
@@ -173,6 +187,7 @@ public class WndGameOptions extends Window {
 				PixelDungeon.keepEnchantments( false );
 				PixelDungeon.upgradeScrolls( false );
 				PixelDungeon.hungerRate( 1.0F );
+				PixelDungeon.useRate( 1.0F );
 				PixelDungeon.treasureAmount( 1.0F );
 
 				btnNightMode.checked( PixelDungeon.nightModeDisabled() );
@@ -180,6 +195,7 @@ public class WndGameOptions extends Window {
 				btnKeepEnchantments.checked( PixelDungeon.keepEnchantments() );
 				btnUpgradeScrolls.checked( PixelDungeon.upgradeScrolls() );
 				btnHungerRate.updateLabel();
+				btnUseRate.updateLabel();
 				btnTreasureAmount.updateLabel();
 			}
 		};
