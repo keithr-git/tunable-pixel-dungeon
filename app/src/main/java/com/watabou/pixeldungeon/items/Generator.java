@@ -204,6 +204,12 @@ public class Generator {
 		} else {
 			Category.SCROLL.probs[0] = 30;
 		}
+
+		if (PixelDungeon.upgradeScrolls()) {
+			Category.SCROLL.probs[10] = 8;
+		} else {
+			Category.SCROLL.probs[10] = 0;
+		}
 	}
 	
 	public static Item random() {

@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e92d653-b14d-4086-ab63-ec8539310ee3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/items/armor/Armor.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/items/armor/Armor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/Preferences.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/Preferences.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/items/weapon/Weapon.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/items/weapon/Weapon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/windows/WndSettings.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/windows/WndSettings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pixel-dungeon.iws" />
@@ -47,14 +46,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WndGameOptions.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WndGameOptions.java" pinned="false" current-in-tab="true">
         <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="70" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.6511628">
+              <caret line="85" column="88" selection-start-line="85" selection-start-column="88" selection-end-line="85" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Generator.java" pinned="false" current-in-tab="false">
+        <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="210" column="53" selection-start-line="210" selection-start-column="53" selection-end-line="210" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegularLevel.java" pinned="false" current-in-tab="false">
+        <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/levels/RegularLevel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="579" column="8" selection-start-line="579" selection-start-column="8" selection-end-line="579" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,7 +82,7 @@
         <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="331" column="89" selection-start-line="331" selection-start-column="89" selection-end-line="331" selection-end-column="89" />
+              <caret line="333" column="41" selection-start-line="333" selection-start-column="27" selection-end-line="333" selection-end-column="41" />
               <folding>
                 <element signature="e#9312#9313#0" expanded="true" />
                 <element signature="e#9374#9375#0" expanded="true" />
@@ -74,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Preferences.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Preferences.java" pinned="false" current-in-tab="false">
         <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/Preferences.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32038835">
-              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="54" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -1408,14 +1427,14 @@
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/actors/mobs/Mimic.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/Item.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/wands/Wand.java" />
-        <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/levels/RegularLevel.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/armor/Armor.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/weapon/Weapon.java" />
-        <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndSettings.java" />
-        <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java" />
         <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/Preferences.java" />
+        <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java" />
+        <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java" />
+        <option value="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java" />
       </list>
     </option>
   </component>
@@ -1696,6 +1715,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="levels" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pixel-dungeon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tunable-pixel-dungeon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watabou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pixeldungeon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="items" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1921,15 +1978,15 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32987553" sideWeight="0.49361023" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987553" sideWeight="0.49361023" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32987553" sideWeight="0.5063898" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30186722" sideWeight="0.5106496" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30186722" sideWeight="0.49361023" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30186722" sideWeight="0.48935038" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1951,13 +2008,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java</url>
-          <line>323</line>
-          <properties />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
@@ -2015,22 +2065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/levels/RegularLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4314721">
-          <caret line="579" column="9" selection-start-line="579" selection-start-column="9" selection-end-line="579" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -2110,19 +2144,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="331" column="89" selection-start-line="331" selection-start-column="89" selection-end-line="331" selection-end-column="89" />
-          <folding>
-            <element signature="e#9312#9313#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
-            <element signature="e#9404#9405#0" expanded="true" />
-            <element signature="e#9472#9473#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndSettings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2137,21 +2158,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java">
+    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/Preferences.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="70" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
+          <caret line="42" column="54" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/PixelDungeon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="333" column="41" selection-start-line="333" selection-start-column="27" selection-end-line="333" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#9312#9313#0" expanded="true" />
+            <element signature="e#9374#9375#0" expanded="true" />
+            <element signature="e#9404#9405#0" expanded="true" />
+            <element signature="e#9472#9473#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/Preferences.java">
+    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/items/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32038835">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="210" column="53" selection-start-line="210" selection-start-column="53" selection-end-line="210" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/levels/RegularLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="579" column="8" selection-start-line="579" selection-start-column="8" selection-end-line="579" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/src/main/java/com/watabou/pixeldungeon/windows/WndGameOptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6511628">
+          <caret line="85" column="88" selection-start-line="85" selection-start-column="88" selection-end-line="85" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
