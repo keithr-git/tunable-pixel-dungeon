@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.EquipableItem;
@@ -154,7 +155,7 @@ public class Armor extends EquipableItem {
 	public Item upgrade( boolean inscribe ) {
 		
 		if (glyph != null) {
-			if (!inscribe && Random.Int( level() ) > 0) {
+			if (!inscribe && !PixelDungeon.keepEnchantments() && Random.Int( level() ) > 0) {
 				GLog.w( TXT_INCOMPATIBLE );
 				inscribe( null );
 			}

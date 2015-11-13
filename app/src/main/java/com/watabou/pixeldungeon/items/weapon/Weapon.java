@@ -18,6 +18,7 @@
 package com.watabou.pixeldungeon.items.weapon;
 
 import com.watabou.pixeldungeon.Badges;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
@@ -149,7 +150,7 @@ abstract public class Weapon extends KindOfWeapon {
 	
 	public Item upgrade( boolean enchant ) {		
 		if (enchantment != null) {
-			if (!enchant && Random.Int( level() ) > 0) {
+			if (!enchant && !PixelDungeon.keepEnchantments() && Random.Int( level() ) > 0) {
 				GLog.w( TXT_INCOMPATIBLE );
 				enchant( null );
 			}
