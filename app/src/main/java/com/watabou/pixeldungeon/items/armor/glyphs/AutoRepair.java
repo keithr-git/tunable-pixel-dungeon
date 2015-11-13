@@ -43,7 +43,11 @@ public class AutoRepair extends Glyph {
 	public String name( String weaponName) {
 		return String.format( TXT_AUTO_REPAIR, weaponName );
 	}
-	
+
+	public static final String glyphName() {
+		return "Auto Repair";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return GRAY;

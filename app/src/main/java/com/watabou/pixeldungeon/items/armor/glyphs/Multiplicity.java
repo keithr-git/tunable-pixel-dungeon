@@ -74,6 +74,10 @@ public class Multiplicity extends Glyph {
 		return String.format( TXT_MULTIPLICITY, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Multiplicity";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return PINK;

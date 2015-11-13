@@ -54,4 +54,9 @@ public class Luck extends Weapon.Enchantment {
 	public Glowing glowing() {
 		return GREEN;
 	}
+
+
+	public static final String enchantmentName() {
+		return "Lucky";
+	}
 }

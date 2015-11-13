@@ -65,6 +65,10 @@ public class Potential extends Glyph {
 		return String.format( TXT_POTENTIAL, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Potential";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return BLUE;

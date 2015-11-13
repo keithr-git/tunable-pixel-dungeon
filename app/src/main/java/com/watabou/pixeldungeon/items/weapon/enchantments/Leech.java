@@ -65,4 +65,7 @@ public class Leech extends Weapon.Enchantment {
 		return String.format( TXT_VAMPIRIC, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Vampiric";
+	}
 }

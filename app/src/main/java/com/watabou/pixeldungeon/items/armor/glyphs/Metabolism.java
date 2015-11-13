@@ -66,6 +66,10 @@ public class Metabolism extends Glyph {
 		return String.format( TXT_METABOLISM, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Metabolism";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return RED;

@@ -58,4 +58,7 @@ public class Paralysis extends Weapon.Enchantment {
 		return String.format( TXT_STUNNING, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Stunning";
+	}
 }

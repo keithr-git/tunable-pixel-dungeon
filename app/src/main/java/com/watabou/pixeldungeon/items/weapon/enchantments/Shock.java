@@ -97,4 +97,8 @@ public class Shock extends Weapon.Enchantment {
 			hit( Random.element( ns ), Random.Int( damage / 2, damage ) );
 		}
 	}
+
+	public static final String enchantmentName() {
+		return "Shocking";
+	}
 }

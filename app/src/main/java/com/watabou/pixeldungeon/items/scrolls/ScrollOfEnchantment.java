@@ -18,6 +18,7 @@
 package com.watabou.pixeldungeon.items.scrolls;
 
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.effects.Enchanting;
 import com.watabou.pixeldungeon.effects.Speck;
 import com.watabou.pixeldungeon.items.Item;
@@ -38,21 +39,27 @@ public class ScrollOfEnchantment extends InventoryScroll {
 	
 	@Override
 	protected void onItemSelected( Item item ) {
-
-		ScrollOfRemoveCurse.uncurse( Dungeon.hero, item );
-		
 		if (item instanceof Weapon) {
-			
-			((Weapon)item).enchant();
-			
+			if (PixelDungeon.chooseEnchantments()) {
+				((Weapon)item).chooseEnchantment();
+			} else {
+				((Weapon)item).enchant();
+				enchant( item );
+			}
 		} else {
-
-			((Armor)item).inscribe();
-		
+			if (PixelDungeon.chooseEnchantments()) {
+				((Armor)item).chooseGlyph();
+			} else {
+				((Armor)item).inscribe();
+				enchant( item );
+			}
 		}
-		
+	}
+
+	static public void enchant(Item item) {
+		ScrollOfRemoveCurse.uncurse( Dungeon.hero, item );
 		item.fix();
-		
+
 		curUser.sprite.emitter().start( Speck.factory( Speck.LIGHT ), 0.1f, 5 );
 		Enchanting.show( curUser, item );
 		GLog.w( TXT_GLOWS, item.name() );

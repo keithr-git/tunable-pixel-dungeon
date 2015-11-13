@@ -27,6 +27,8 @@ import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.EquipableItem;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.armor.glyphs.*;
+import com.watabou.pixeldungeon.items.scrolls.ScrollOfEnchantment;
+import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.utils.GLog;
@@ -34,6 +36,7 @@ import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+import com.watabou.pixeldungeon.windows.WndOptions;
 
 public class Armor extends EquipableItem {
 	
@@ -319,6 +322,10 @@ public class Armor extends EquipableItem {
 		
 		return inscribe( gl );
 	}
+
+	public void chooseGlyph() {
+		Glyph.choose(this);
+	}
 	
 	public boolean isInscribed() {
 		return glyph != null;
@@ -376,6 +383,27 @@ public class Armor extends EquipableItem {
 				return null;
 			}
 		}
-		
+
+		public static Glyph index( int index ) {
+			try {
+				return ((Class<Glyph>)glyphs[ index ]).newInstance();
+			} catch (Exception e) {
+				return null;
+			}
+		}
+
+		public static void choose( final Armor armor ) {
+			GameScene.show( new WndOptions( null, null,
+				Bounce.glyphName(), Affection.glyphName(), AntiEntropy.glyphName(), Multiplicity.glyphName(),
+				Potential.glyphName(), Metabolism.glyphName(), Stench.glyphName(), Viscosity.glyphName(),
+				Displacement.glyphName(), Entanglement.glyphName(), AutoRepair.glyphName() ) {
+
+				@Override
+				protected void onSelect(int index) {
+					armor.inscribe( Glyph.index( index ) );
+					ScrollOfEnchantment.enchant( armor );
+				}
+			} );
+		}
 	}
 }

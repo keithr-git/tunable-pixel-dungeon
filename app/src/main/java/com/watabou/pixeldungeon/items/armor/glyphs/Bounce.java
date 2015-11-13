@@ -69,4 +69,7 @@ public class Bounce extends Glyph {
 		return String.format( TXT_BOUNCE, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Bounce";
+	}
 }

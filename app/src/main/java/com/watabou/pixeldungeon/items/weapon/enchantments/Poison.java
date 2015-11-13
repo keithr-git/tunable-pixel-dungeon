@@ -58,4 +58,7 @@ public class Poison extends Weapon.Enchantment {
 		return String.format( TXT_VENOMOUS, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Venemous";
+	}
 }

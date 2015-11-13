@@ -30,22 +30,29 @@ public class WndOptions extends Window {
 	
 	public WndOptions( String title, String message, String... options ) {
 		super();
-		
-		BitmapTextMultiline tfTitle = PixelScene.createMultiline( title, 9 );
-		tfTitle.hardlight( TITLE_COLOR );
-		tfTitle.x = tfTitle.y = MARGIN;
-		tfTitle.maxWidth = WIDTH - MARGIN * 2;
-		tfTitle.measure();
-		add( tfTitle );
-		
-		BitmapTextMultiline tfMesage = PixelScene.createMultiline( message, 8 );
-		tfMesage.maxWidth = WIDTH - MARGIN * 2;
-		tfMesage.measure();
-		tfMesage.x = MARGIN;
-		tfMesage.y = tfTitle.y + tfTitle.height() + MARGIN;
-		add( tfMesage );
-		
-		float pos = tfMesage.y + tfMesage.height() + MARGIN;
+
+		float pos = MARGIN;
+
+		if (title != null) {
+			BitmapTextMultiline tfTitle = PixelScene.createMultiline( title, 9 );
+			tfTitle.hardlight( TITLE_COLOR );
+			tfTitle.x = MARGIN;
+			tfTitle.y = pos;
+			tfTitle.maxWidth = WIDTH - MARGIN * 2;
+			tfTitle.measure();
+			add( tfTitle );
+			pos += tfTitle.y + tfTitle.height() + MARGIN;
+		}
+
+		if (message != null) {
+			BitmapTextMultiline tfMesage = PixelScene.createMultiline( message, 8 );
+			tfMesage.maxWidth = WIDTH - MARGIN * 2;
+			tfMesage.measure();
+			tfMesage.x = MARGIN;
+			tfMesage.y = pos;
+			add( tfMesage );
+			pos = tfMesage.y + tfMesage.height() + MARGIN;
+		}
 		
 		for (int i=0; i < options.length; i++) {
 			final int index = i;

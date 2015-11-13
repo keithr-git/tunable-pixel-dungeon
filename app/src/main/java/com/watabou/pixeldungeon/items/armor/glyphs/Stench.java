@@ -52,7 +52,11 @@ public class Stench extends Glyph {
 	public String name( String weaponName) {
 		return String.format( TXT_STENCH, weaponName );
 	}
-	
+
+	public static final String glyphName() {
+		return "Stench";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return GREEN;

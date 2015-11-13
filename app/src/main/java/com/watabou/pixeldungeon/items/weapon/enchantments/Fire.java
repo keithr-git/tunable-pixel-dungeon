@@ -67,4 +67,7 @@ public class Fire extends Weapon.Enchantment {
 		return String.format( TXT_BLAZING, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Blazing";
+	}
 }

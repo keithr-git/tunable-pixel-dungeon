@@ -40,6 +40,7 @@ enum Preferences {
 	public static final String KEY_SECOND_QUICKSLOT		= "second_quickslot";
 	public static final String KEY_NIGHT_MODE		= "night_mode_disabled";
 	public static final String KEY_AUTO_IDENTIFY		= "auto_identify";
+	public static final String KEY_CHOOSE_ENCHANTMENTS	= "choose_enchantments";
 	public static final String KEY_KEEP_ENCHANTMENTS	= "keep_enchantments";
 	public static final String KEY_UPGRADE_SCROLLS		= "upgrade_scrolls";
 	public static final String KEY_FREE_SEED_POUCH		= "free_seed_pouch";

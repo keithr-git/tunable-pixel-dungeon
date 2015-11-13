@@ -332,6 +332,14 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_AUTO_IDENTIFY, false );
 	}
 
+	public static void chooseEnchantments( boolean value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_CHOOSE_ENCHANTMENTS, value );
+	}
+
+	public static boolean chooseEnchantments() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_CHOOSE_ENCHANTMENTS, false );
+	}
+
 	public static void keepEnchantments( boolean value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_KEEP_ENCHANTMENTS, value );
 	}

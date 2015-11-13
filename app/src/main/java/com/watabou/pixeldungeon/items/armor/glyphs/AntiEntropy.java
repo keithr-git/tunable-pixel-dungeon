@@ -60,6 +60,10 @@ public class AntiEntropy extends Glyph {
 		return String.format( TXT_ANTI_ENTROPY, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Anti-Entropy";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return BLUE;

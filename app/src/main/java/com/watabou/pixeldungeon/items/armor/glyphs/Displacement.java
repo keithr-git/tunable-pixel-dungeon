@@ -63,6 +63,10 @@ public class Displacement extends Glyph {
 		return String.format( TXT_DISPLACEMENT, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Displacement";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return BLUE;

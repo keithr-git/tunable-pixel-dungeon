@@ -29,16 +29,16 @@ import com.watabou.pixeldungeon.ui.Window;
 
 public class WndSettings extends Window {
 	
-	private static final String TXT_ZOOM_IN			= "+";
-	private static final String TXT_ZOOM_OUT		= "-";
+	private static final String TXT_ZOOM_IN		= "+";
+	private static final String TXT_ZOOM_OUT	= "-";
 	private static final String TXT_ZOOM_DEFAULT	= "Default Zoom";
 
-	private static final String TXT_SCALE_UP		= "Scale up UI";
-	private static final String TXT_IMMERSIVE		= "Immersive mode";
+	private static final String TXT_SCALE_UP	= "Scale up UI";
+	private static final String TXT_IMMERSIVE	= "Immersive mode";
 	
-	private static final String TXT_MUSIC	= "Music";
+	private static final String TXT_MUSIC		= "Music";
 	
-	private static final String TXT_SOUND	= "Sound FX";
+	private static final String TXT_SOUND		= "Sound FX";
 	
 	private static final String TXT_BRIGHTNESS	= "Brightness";
 	
@@ -49,10 +49,11 @@ public class WndSettings extends Window {
 
 	private static final String TXT_START_WITH	= "Start Game With ...";
 	private static final String TXT_GAME_OPTIONS	= "Game Options ...";
+	private static final String TXT_GAME_TUNABLES	= "Game Tunables ...";
 
-	private static final int WIDTH		= 112;
-	private static final int BTN_HEIGHT	= 20;
-	private static final int GAP 		= 2;
+	private static final int WIDTH			= 112;
+	private static final int BTN_HEIGHT		= 20;
+	private static final int GAP 			= 2;
 
 	private RedButton btnZoomOut;
 	private RedButton btnZoomIn;
@@ -201,7 +202,16 @@ public class WndSettings extends Window {
 		btnGameOptions.setRect( 0, nextButtonPosition, WIDTH, BTN_HEIGHT );
 		add( btnGameOptions );
 
-		resize( WIDTH, (int) btnGameOptions.bottom() );
+		RedButton btnGameTunables = new RedButton( TXT_GAME_TUNABLES ) {
+			@Override
+			protected void onClick() {
+				parent.add( new WndGameTunables() );
+			}
+		};
+		btnGameTunables.setRect( 0, btnGameOptions.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		add( btnGameTunables );
+
+		resize( WIDTH, (int) btnGameTunables.bottom() );
 	}
 	
 	private void zoom( float value ) {

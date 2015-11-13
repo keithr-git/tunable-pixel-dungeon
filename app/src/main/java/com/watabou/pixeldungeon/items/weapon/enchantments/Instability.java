@@ -34,4 +34,7 @@ public class Instability extends Weapon.Enchantment {
 		return String.format( TXT_UNSTABLE, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Unstable";
+	}
 }

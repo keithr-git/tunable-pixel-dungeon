@@ -67,4 +67,7 @@ public class Death extends Weapon.Enchantment {
 		return String.format( TXT_GRIM, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Grim";
+	}
 }

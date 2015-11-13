@@ -64,4 +64,7 @@ public class Horror extends Weapon.Enchantment {
 		return String.format( TXT_ELDRITCH, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Eldrich";
+	}
 }

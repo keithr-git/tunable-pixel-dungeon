@@ -58,6 +58,10 @@ public class Entanglement extends Glyph {
 		return String.format( TXT_ENTANGLEMENT, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Entanglement";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return GREEN;

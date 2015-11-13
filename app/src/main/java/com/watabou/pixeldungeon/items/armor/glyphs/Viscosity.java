@@ -71,6 +71,10 @@ public class Viscosity extends Glyph {
 		return String.format( TXT_VISCOSITY, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Viscosity";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return PURPLE;

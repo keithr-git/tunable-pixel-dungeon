@@ -61,6 +61,10 @@ public class Affection extends Glyph {
 		return String.format( TXT_AFFECTION, weaponName );
 	}
 
+	public static final String glyphName() {
+		return "Affection";
+	}
+
 	@Override
 	public Glowing glowing() {
 		return PINK;

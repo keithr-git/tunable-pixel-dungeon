@@ -24,11 +24,14 @@ import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.KindOfWeapon;
+import com.watabou.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.watabou.pixeldungeon.items.weapon.enchantments.*;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
+import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
+import com.watabou.pixeldungeon.windows.WndOptions;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -213,6 +216,10 @@ abstract public class Weapon extends KindOfWeapon {
 		
 		return enchant( ench );
 	}
+
+	public void chooseEnchantment() {
+		Enchantment.choose(this);
+	}
 	
 	public boolean isEnchanted() {
 		return enchantment != null;
@@ -257,6 +264,27 @@ abstract public class Weapon extends KindOfWeapon {
 				return null;
 			}
 		}
-		
+
+		public static Enchantment index( int index ) {
+			try {
+				return ((Class<Enchantment>)enchants[ index ]).newInstance();
+			} catch (Exception e) {
+				return null;
+			}
+		}
+
+		public static void choose( final Weapon weapon ) {
+			GameScene.show (new WndOptions( null, null,
+				Fire.enchantmentName(), Poison.enchantmentName(), Death.enchantmentName(), Paralysis.enchantmentName(),
+				Leech.enchantmentName(), Slow.enchantmentName(), Shock.enchantmentName(), Instability.enchantmentName(),
+				Horror.enchantmentName(), Luck.enchantmentName(), Tempering.enchantmentName() ) {
+
+				@Override
+				protected void onSelect(int index) {
+					weapon.enchant( Enchantment.index( index ) );
+					ScrollOfEnchantment.enchant( weapon );
+				}
+			});
+		}
 	}
 }

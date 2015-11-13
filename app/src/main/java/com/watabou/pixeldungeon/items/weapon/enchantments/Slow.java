@@ -58,4 +58,7 @@ public class Slow extends Weapon.Enchantment {
 		return String.format( TXT_CHILLING, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Chilling";
+	}
 }

@@ -44,4 +44,7 @@ public class Tempering extends Weapon.Enchantment {
 		return String.format( TXT_TEMPERED, weaponName );
 	}
 
+	public static final String enchantmentName() {
+		return "Tempering";
+	}
 }
