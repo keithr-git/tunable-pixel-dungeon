@@ -25,28 +25,29 @@ enum Preferences {
 
 	INSTANCE;
 	
-	public static final String KEY_LANDSCAPE	= "landscape";
-	public static final String KEY_IMMERSIVE	= "immersive";
-	public static final String KEY_GOOGLE_PLAY	= "google_play";
-	public static final String KEY_SCALE_UP		= "scaleup";
-	public static final String KEY_MUSIC		= "music";
-	public static final String KEY_SOUND_FX		= "soundfx";
-	public static final String KEY_ZOOM		= "zoom";
-	public static final String KEY_LAST_CLASS	= "last_class";
-	public static final String KEY_CHALLENGES	= "challenges";
-	public static final String KEY_DONATED		= "donated";
-	public static final String KEY_INTRO		= "intro";
-	public static final String KEY_BRIGHTNESS	= "brightness";
-	public static final String KEY_SECOND_QUICKSLOT	= "second_quickslot";
-	public static final String KEY_NIGHT_MODE	= "night_mode_disabled";
-	public static final String KEY_AUTO_IDENTIFY	= "auto_identify";
-	public static final String KEY_KEEP_ENCHANTMENTS = "keep_enchantments";
-	public static final String KEY_UPGRADE_SCROLLS	= "upgrade_scrolls";
-	public static final String KEY_FREE_SCROLLCASE	= "free_scrollcase";
-	public static final String KEY_FREE_SEED_POUCH	= "free_seed_pouch";
-	public static final String KEY_HUNGER_RATE	= "hunger_rate";
-	public static final String KEY_USE_RATE		= "use_rate";
-	public static final String KEY_TREASURE_AMOUNT	= "treasuer_amount";
+	public static final String KEY_LANDSCAPE		= "landscape";
+	public static final String KEY_IMMERSIVE		= "immersive";
+	public static final String KEY_GOOGLE_PLAY		= "google_play";
+	public static final String KEY_SCALE_UP			= "scaleup";
+	public static final String KEY_MUSIC			= "music";
+	public static final String KEY_SOUND_FX			= "soundfx";
+	public static final String KEY_ZOOM			= "zoom";
+	public static final String KEY_LAST_CLASS		= "last_class";
+	public static final String KEY_CHALLENGES		= "challenges";
+	public static final String KEY_DONATED			= "donated";
+	public static final String KEY_INTRO			= "intro";
+	public static final String KEY_BRIGHTNESS		= "brightness";
+	public static final String KEY_SECOND_QUICKSLOT		= "second_quickslot";
+	public static final String KEY_NIGHT_MODE		= "night_mode_disabled";
+	public static final String KEY_AUTO_IDENTIFY		= "auto_identify";
+	public static final String KEY_KEEP_ENCHANTMENTS	= "keep_enchantments";
+	public static final String KEY_UPGRADE_SCROLLS		= "upgrade_scrolls";
+	public static final String KEY_FREE_SEED_POUCH		= "free_seed_pouch";
+	public static final String KEY_FREE_SCROLL_HOLDER	= "free_scroll_holder";
+	public static final String KEY_FREE_WAND_HOLSTER	= "free_wand_holster";
+	public static final String KEY_HUNGER_RATE		= "hunger_rate";
+	public static final String KEY_USE_RATE			= "use_rate";
+	public static final String KEY_TREASURE_AMOUNT		= "treasuer_amount";
 
 	private SharedPreferences prefs;
 	

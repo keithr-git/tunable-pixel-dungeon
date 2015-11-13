@@ -25,6 +25,7 @@ import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.bags.Keyring;
 import com.watabou.pixeldungeon.items.bags.ScrollHolder;
 import com.watabou.pixeldungeon.items.bags.SeedPouch;
+import com.watabou.pixeldungeon.items.bags.WandHolster;
 import com.watabou.pixeldungeon.items.food.Food;
 import com.watabou.pixeldungeon.items.potions.PotionOfStrength;
 import com.watabou.pixeldungeon.items.rings.RingOfShadows;
@@ -118,12 +119,16 @@ public enum HeroClass {
 		new Food().identify().collect();
 		new Keyring().collect();
 
-		if (PixelDungeon.freeScrollCase()) {
+		if (PixelDungeon.freeScrollHolder()) {
 			new ScrollHolder().collect();
 		}
 
 		if (PixelDungeon.freeSeedPouch()) {
 			new SeedPouch().collect();
+		}
+
+		if (PixelDungeon.freeWandHolster()) {
+			new WandHolster().collect();
 		}
 	}
 	

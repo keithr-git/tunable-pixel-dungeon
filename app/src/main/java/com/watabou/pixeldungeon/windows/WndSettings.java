@@ -47,6 +47,7 @@ public class WndSettings extends Window {
 	private static final String TXT_SWITCH_PORT	= "Switch to portrait";
 	private static final String TXT_SWITCH_LAND	= "Switch to landscape";
 
+	private static final String TXT_START_WITH	= "Start Game With ...";
 	private static final String TXT_GAME_OPTIONS	= "Game Options ...";
 
 	private static final int WIDTH		= 112;
@@ -60,6 +61,7 @@ public class WndSettings extends Window {
 		super();
 		
 		CheckBox btnImmersive = null;
+		float nextButtonPosition;
 		
 		if (inGame) {
 			int w = BTN_HEIGHT;
@@ -86,6 +88,7 @@ public class WndSettings extends Window {
 					zoom( PixelScene.defaultZoom );
 				}
 			}.setRect( btnZoomOut.right(), 0, WIDTH - btnZoomIn.width() - btnZoomOut.width(), BTN_HEIGHT ) );
+			nextButtonPosition = btnZoomIn.bottom() + GAP;
 			
 			updateEnabled();
 			
@@ -113,7 +116,8 @@ public class WndSettings extends Window {
 			btnImmersive.checked( PixelDungeon.immersed() );
 			btnImmersive.enable( android.os.Build.VERSION.SDK_INT >= 19 );
 			add( btnImmersive );
-			
+
+			nextButtonPosition = btnImmersive.bottom() + GAP;
 		}
 		
 		CheckBox btnMusic = new CheckBox( TXT_MUSIC ) {
@@ -123,7 +127,7 @@ public class WndSettings extends Window {
 				PixelDungeon.music( checked() );
 			}
 		};
-		btnMusic.setRect( 0, (btnImmersive != null ? btnImmersive.bottom() : BTN_HEIGHT) + GAP, WIDTH, BTN_HEIGHT );
+		btnMusic.setRect( 0, nextButtonPosition, WIDTH, BTN_HEIGHT );
 		btnMusic.checked( PixelDungeon.music() );
 		add( btnMusic );
 		
@@ -164,7 +168,7 @@ public class WndSettings extends Window {
 			add( btnQuickslot );
 			
 			resize( WIDTH, (int)btnQuickslot.bottom() );
-			
+			nextButtonPosition = btnQuickslot.bottom() + GAP;
 		} else {
 
 			RedButton btnOrientation = new RedButton( orientationText() ) {
@@ -176,17 +180,28 @@ public class WndSettings extends Window {
 			btnOrientation.setRect( 0, btnSound.bottom() + GAP, WIDTH, BTN_HEIGHT );
 			add( btnOrientation );
 
-			RedButton btnGameOptions = new RedButton( TXT_GAME_OPTIONS ) {
+			RedButton btnStartWith = new RedButton( TXT_START_WITH ) {
 				@Override
 				protected void onClick() {
-					parent.add( new WndGameOptions() );
+					parent.add( new WndStartWith() );
 				}
 			};
-			btnGameOptions.setRect( 0, btnOrientation.bottom() + GAP, WIDTH, BTN_HEIGHT );
-			add( btnGameOptions );
+			btnStartWith.setRect( 0, btnOrientation.bottom() + GAP, WIDTH, BTN_HEIGHT );
+			add( btnStartWith );
 
-			resize( WIDTH, (int)btnGameOptions.bottom() );
+			nextButtonPosition = btnStartWith.bottom() + GAP;
 		}
+
+		RedButton btnGameOptions = new RedButton( TXT_GAME_OPTIONS ) {
+			@Override
+			protected void onClick() {
+				parent.add( new WndGameOptions() );
+			}
+		};
+		btnGameOptions.setRect( 0, nextButtonPosition, WIDTH, BTN_HEIGHT );
+		add( btnGameOptions );
+
+		resize( WIDTH, (int) btnGameOptions.bottom() );
 	}
 	
 	private void zoom( float value ) {

@@ -16,8 +16,6 @@ public class WndGameOptions extends Window {
 	private static final String TXT_AUTO_IDENT      = "Auto-Identify Items";
 	private static final String TXT_KEEP_ENCHANTMENT = "Keep Enchantments";
 	private static final String TXT_UPGRADE_SCROLLS	= "Random Upgrade Scrolls";
-	private static final String TXT_FREE_SCROLLCASE	= "Free Scroll Holder";
-	private static final String TXT_FREE_SEED_POUCH	= "Free Seed Pouch";
 	private static final String TXT_HUNGER_RATE	= "Hunger Rate:    ";
 	private static final String TXT_USE_RATE	= "Use Rate:       ";
 	private static final String TXT_TREASURE_AMOUNT	= "Treasure Amount:";
@@ -142,31 +140,7 @@ public class WndGameOptions extends Window {
 		btnUpgradeScrolls.checked( PixelDungeon.upgradeScrolls() );
 		add( btnUpgradeScrolls );
 
-		final CheckBox btnFreeScrollCase = new CheckBox( TXT_FREE_SCROLLCASE ) {
-			@Override
-			protected void onClick() {
-				super.onClick();
-				PixelDungeon.freeScrollCase( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
-			}
-		};
-		btnFreeScrollCase.setRect( 0, btnUpgradeScrolls.bottom() + GAP, WIDTH, BTN_HEIGHT );
-		btnFreeScrollCase.checked( PixelDungeon.freeScrollCase() );
-		add( btnFreeScrollCase );
-
-		final CheckBox btnFreeSeedPouch = new CheckBox( TXT_FREE_SEED_POUCH ) {
-			@Override
-			protected void onClick() {
-				super.onClick();
-				PixelDungeon.freeSeedPouch( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
-			}
-		};
-		btnFreeSeedPouch.setRect( 0, btnFreeScrollCase.bottom() + GAP, WIDTH, BTN_HEIGHT );
-		btnFreeSeedPouch.checked( PixelDungeon.freeSeedPouch() );
-		add( btnFreeSeedPouch );
-
-		final FloatValue btnHungerRate = new FloatValue( this, btnFreeSeedPouch.bottom() + GAP, TXT_HUNGER_RATE ) {
+		final FloatValue btnHungerRate = new FloatValue( this, btnUpgradeScrolls.bottom() + GAP, TXT_HUNGER_RATE ) {
 			@Override
 			float getValue() {
 				return PixelDungeon.hungerRate();
@@ -210,8 +184,6 @@ public class WndGameOptions extends Window {
 				PixelDungeon.autoIdentify( false );
 				PixelDungeon.keepEnchantments( false );
 				PixelDungeon.upgradeScrolls( false );
-				PixelDungeon.freeScrollCase( false );
-				PixelDungeon.freeSeedPouch( false );
 				PixelDungeon.hungerRate( 1.0F );
 				PixelDungeon.useRate( 1.0F );
 				PixelDungeon.treasureAmount( 1.0F );
@@ -220,8 +192,6 @@ public class WndGameOptions extends Window {
 				btnAutoIdentify.checked( PixelDungeon.autoIdentify() );
 				btnKeepEnchantments.checked( PixelDungeon.keepEnchantments() );
 				btnUpgradeScrolls.checked( PixelDungeon.upgradeScrolls() );
-				btnFreeScrollCase.checked( PixelDungeon.freeScrollCase() );
-				btnFreeSeedPouch.checked( PixelDungeon.freeSeedPouch() );
 				btnHungerRate.updateLabel();
 				btnUseRate.updateLabel();
 				btnTreasureAmount.updateLabel();
