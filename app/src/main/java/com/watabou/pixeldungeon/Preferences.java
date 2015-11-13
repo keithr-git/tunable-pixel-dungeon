@@ -38,7 +38,7 @@ enum Preferences {
 	public static final String KEY_INTRO		= "intro";
 	public static final String KEY_BRIGHTNESS	= "brightness";
 	public static final String KEY_NIGHT_MODE	= "night_mode_enabled";
-	public static final String KEY_AUTO_IDENTIFY = "auto_identify";
+	public static final String KEY_AUTO_IDENTIFY	= "auto_identify";
 	
 	private SharedPreferences prefs;
 	
