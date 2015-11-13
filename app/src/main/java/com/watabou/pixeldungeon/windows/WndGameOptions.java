@@ -29,6 +29,7 @@ public class WndGameOptions extends Window {
 	private static final int GAP 		= 2;
 
 	private class FloatValue {
+		RedButton btnMinus;
 		RedButton btnLabel;
 		String prefix;
 
@@ -37,18 +38,12 @@ public class WndGameOptions extends Window {
 
 			prefix = prefix_;
 
-			final RedButton btnMinus = new RedButton( "-" ) {
+			btnMinus = new RedButton( "-" ) {
 				@Override
 				protected void onClick() {
 					float value = getValue();
 
 					value -= 0.1;
-					if (value < 0.1) {
-						enable( false );
-						value = 0.0F;
-					}
-
-					setValue( value );
 					updateLabel( value );
 				}
 			};
@@ -59,12 +54,7 @@ public class WndGameOptions extends Window {
 				protected void onClick() {
 					float value = getValue();
 
-					if (value == 0.0) {
-						btnMinus.enable( true );
-					}
 					value += 0.1;
-
-					setValue( value );
 					updateLabel( value );
 				}
 			};
@@ -76,6 +66,14 @@ public class WndGameOptions extends Window {
 		}
 
 		void updateLabel(float value) {
+			if (value < 0.09) {
+				btnMinus.enable( false );
+				value = 0.0F;
+			} else {
+				btnMinus.enable( true );
+			}
+
+			setValue( value );
 			btnLabel.text( prefix + String.format( " %4.1f", value ) );
 		}
 
