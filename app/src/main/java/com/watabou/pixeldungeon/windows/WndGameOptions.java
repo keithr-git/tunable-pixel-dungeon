@@ -12,7 +12,7 @@ import com.watabou.pixeldungeon.ui.Window;
  */
 public class WndGameOptions extends Window {
 
-	private static final String TXT_NIGHT_MODE      = "Enable Night Mode";
+	private static final String TXT_NIGHT_MODE      = "Disable Night Mode";
 	private static final String TXT_AUTO_IDENT      = "Auto-Identify Items";
 	private static final String TXT_KEEP_ENCHANTMENT = "Keep Enchantments";
 	private static final String TXT_UPGRADE_SCROLLS	= "Random Upgrade Scrolls";
@@ -29,12 +29,12 @@ public class WndGameOptions extends Window {
 			@Override
 			protected void onClick() {
 				super.onClick();
-				PixelDungeon.nightModeEnabled( checked() );
+				PixelDungeon.nightModeDisabled( checked() );
 				Sample.INSTANCE.play( Assets.SND_CLICK );
 			}
 		};
 		btnNightMode.setRect( 0, 0, WIDTH, BTN_HEIGHT );
-		btnNightMode.checked( PixelDungeon.nightModeEnabled() );
+		btnNightMode.checked( PixelDungeon.nightModeDisabled() );
 		add( btnNightMode );
 
 		final CheckBox btnAutoIdentify = new CheckBox( TXT_AUTO_IDENT ) {
@@ -76,11 +76,11 @@ public class WndGameOptions extends Window {
 		RedButton btnResetToDefaults = new RedButton( TXT_RESET_DEFAULTS ) {
 			@Override
 			protected void onClick() {
-				PixelDungeon.nightModeEnabled( true );
+				PixelDungeon.nightModeDisabled( false );
 				PixelDungeon.autoIdentify( false );
 				PixelDungeon.keepEnchantments( false );
 				PixelDungeon.upgradeScrolls( false );
-				btnNightMode.checked( PixelDungeon.nightModeEnabled() );
+				btnNightMode.checked( PixelDungeon.nightModeDisabled() );
 				btnAutoIdentify.checked( PixelDungeon.autoIdentify() );
 				btnKeepEnchantments.checked( PixelDungeon.keepEnchantments() );
 				btnUpgradeScrolls.checked( PixelDungeon.upgradeScrolls() );

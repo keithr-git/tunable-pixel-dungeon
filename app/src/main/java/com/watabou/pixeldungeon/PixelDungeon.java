@@ -308,12 +308,12 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_SOUND_FX, true );
 	}
 	
-	public static void nightModeEnabled(boolean value) {
+	public static void nightModeDisabled(boolean value) {
 		Preferences.INSTANCE.put( Preferences.KEY_NIGHT_MODE, value );
 	}
 
-	public static boolean nightModeEnabled() {
-		return Preferences.INSTANCE.getBoolean( Preferences.KEY_NIGHT_MODE, true );
+	public static boolean nightModeDisabled() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_NIGHT_MODE, false );
 	}
 
 	public static void autoIdentify( boolean value ) {
