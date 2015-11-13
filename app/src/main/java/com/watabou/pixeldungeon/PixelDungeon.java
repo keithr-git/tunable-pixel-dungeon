@@ -387,12 +387,12 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getFloat( Preferences.KEY_HUNGER_RATE, 1.0F );
 	}
 
-	public static void useRate( float value ) {
-		Preferences.INSTANCE.put( Preferences.KEY_USE_RATE, value );
+	public static void degradationRate(float value) {
+		Preferences.INSTANCE.put( Preferences.KEY_DEGRADATION_RATE, value );
 	}
 
-	public static float useRate() {
-		return Preferences.INSTANCE.getFloat( Preferences.KEY_USE_RATE, 1.0F );
+	public static float degradationRate() {
+		return Preferences.INSTANCE.getFloat( Preferences.KEY_DEGRADATION_RATE, 1.0F );
 	}
 
 	public static void treasureAmount(float value) {

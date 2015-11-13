@@ -47,7 +47,7 @@ enum Preferences {
 	public static final String KEY_FREE_SCROLL_HOLDER	= "free_scroll_holder";
 	public static final String KEY_FREE_WAND_HOLSTER	= "free_wand_holster";
 	public static final String KEY_HUNGER_RATE		= "hunger_rate";
-	public static final String KEY_USE_RATE			= "use_rate";
+	public static final String KEY_DEGRADATION_RATE		= "degradation_rate";
 	public static final String KEY_TREASURE_AMOUNT		= "treasuer_amount";
 
 	private SharedPreferences prefs;

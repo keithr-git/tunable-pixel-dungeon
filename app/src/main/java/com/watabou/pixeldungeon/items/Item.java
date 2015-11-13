@@ -307,7 +307,7 @@ public class Item implements Bundlable {
 	public void use() {
 		if (level > 0 && !isBroken()) {
 			int threshold = (int)(maxDurability() * DURABILITY_WARNING_LEVEL);
-			if ((durability -= PixelDungeon.useRate()) >= threshold && threshold > durability && levelKnown) {
+			if ((durability -= PixelDungeon.degradationRate()) >= threshold && threshold > durability && levelKnown) {
 				GLog.w( TXT_GONNA_BREAK, name() );
 			}
 			if (isBroken()) {

@@ -8,9 +8,9 @@ import com.watabou.pixeldungeon.ui.Window;
  * Created by keithr on 11/13/15.
  */
 public class WndGameTunables extends Window {
-	private static final String TXT_HUNGER_RATE		= "Hunger Rate:    ";
-	private static final String TXT_USE_RATE		= "Use Rate:       ";
-	private static final String TXT_TREASURE_AMOUNT		= "Treasure Amount:";
+	private static final String TXT_HUNGER_RATE		= "Hunger Rate:     ";
+	private static final String TXT_DEGRADATION_RATE	= "Degradation Rate:";
+	private static final String TXT_TREASURE_AMOUNT		= "Treasure Amount: ";
 
 	private static final String TXT_RESET_DEFAULTS		= "Reset to Defaults";
 
@@ -24,7 +24,7 @@ public class WndGameTunables extends Window {
 		String prefix;
 
 		public FloatValue( Window parent, float offset, String prefix_) {
-			int w = (int) (BTN_HEIGHT * 0.75);
+			int w = (int) (BTN_HEIGHT * 0.6);
 
 			prefix = prefix_;
 
@@ -95,15 +95,15 @@ public class WndGameTunables extends Window {
 			}
 		};
 
-		final FloatValue btnUseRate = new FloatValue( this, btnHungerRate.bottom() + GAP, TXT_USE_RATE ) {
+		final FloatValue btnUseRate = new FloatValue( this, btnHungerRate.bottom() + GAP, TXT_DEGRADATION_RATE ) {
 			@Override
 			float getValue() {
-				return PixelDungeon.useRate();
+				return PixelDungeon.degradationRate();
 			}
 
 			@Override
 			void setValue( float value ) {
-				PixelDungeon.useRate( value );
+				PixelDungeon.degradationRate( value );
 			}
 		};
 
@@ -124,7 +124,7 @@ public class WndGameTunables extends Window {
 			@Override
 			protected void onClick() {
 				PixelDungeon.hungerRate( 1.0F );
-				PixelDungeon.useRate( 1.0F );
+				PixelDungeon.degradationRate( 1.0F );
 				PixelDungeon.treasureAmount( 1.0F );
 
 				btnHungerRate.updateLabel();
