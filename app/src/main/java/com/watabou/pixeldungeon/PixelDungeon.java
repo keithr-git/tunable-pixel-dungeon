@@ -356,6 +356,14 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_UPGRADE_SCROLLS, false );
 	}
 
+	public static void freeDewVial( boolean value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_FREE_DEW_VIAL, value );
+	}
+
+	public static boolean freeDewVial() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_DEW_VIAL, false );
+	}
+
 	public static void freeSeedPouch( boolean value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_FREE_SEED_POUCH, value );
 	}

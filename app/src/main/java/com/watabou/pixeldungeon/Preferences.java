@@ -43,6 +43,7 @@ enum Preferences {
 	public static final String KEY_CHOOSE_ENCHANTMENTS	= "choose_enchantments";
 	public static final String KEY_KEEP_ENCHANTMENTS	= "keep_enchantments";
 	public static final String KEY_UPGRADE_SCROLLS		= "upgrade_scrolls";
+	public static final String KEY_FREE_DEW_VIAL		= "free_dew_vial";
 	public static final String KEY_FREE_SEED_POUCH		= "free_seed_pouch";
 	public static final String KEY_FREE_SCROLL_HOLDER	= "free_scroll_holder";
 	public static final String KEY_FREE_WAND_HOLSTER	= "free_wand_holster";

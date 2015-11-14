@@ -10,6 +10,7 @@ import com.watabou.pixeldungeon.ui.Window;
  * Created by keithr on 11/13/15.
  */
 public class WndStartWith extends Window {
+	private static final String TXT_DEW_VIAL	= "Dew Vial";
 	private static final String TXT_SEED_POUCH	= "Seed Pouch";
 	private static final String TXT_SCROLL_HOLDER	= "Scroll Holder";
 	private static final String TXT_WAND_HOLSTER	= "Wand Holster";
@@ -19,6 +20,18 @@ public class WndStartWith extends Window {
 	private static final int GAP 		= 2;
 
 	public WndStartWith() {
+		final CheckBox btnFreeDewVial = new CheckBox( TXT_DEW_VIAL ) {
+			@Override
+			protected void onClick() {
+				super.onClick();
+				PixelDungeon.freeDewVial( checked() );
+				Sample.INSTANCE.play(Assets.SND_CLICK);
+			}
+		};
+		btnFreeDewVial.setRect( 0, 0, WIDTH, BTN_HEIGHT );
+		btnFreeDewVial.checked( PixelDungeon.freeDewVial() );
+		add( btnFreeDewVial );
+
 		final CheckBox btnFreeSeedPouch = new CheckBox( TXT_SEED_POUCH ) {
 			@Override
 			protected void onClick() {
@@ -27,7 +40,7 @@ public class WndStartWith extends Window {
 				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
-		btnFreeSeedPouch.setRect( 0, 0, WIDTH, BTN_HEIGHT );
+		btnFreeSeedPouch.setRect( 0, btnFreeDewVial.bottom() + GAP, WIDTH, BTN_HEIGHT );
 		btnFreeSeedPouch.checked( PixelDungeon.freeSeedPouch() );
 		add( btnFreeSeedPouch );
 

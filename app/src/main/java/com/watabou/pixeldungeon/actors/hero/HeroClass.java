@@ -19,7 +19,10 @@ package com.watabou.pixeldungeon.actors.hero;
 
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Badges;
+import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.PixelDungeon;
+import com.watabou.pixeldungeon.items.DewVial;
+import com.watabou.pixeldungeon.items.Dewdrop;
 import com.watabou.pixeldungeon.items.TomeOfMastery;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.bags.Keyring;
@@ -120,12 +123,17 @@ public enum HeroClass {
 		new Food().identify().collect();
 		new Keyring().collect();
 
-		if (PixelDungeon.freeScrollHolder()) {
-			new ScrollHolder().collect();
+		if (PixelDungeon.freeDewVial()) {
+			new DewVial().collect();
+			Dungeon.dewVial = false;
 		}
 
 		if (PixelDungeon.freeSeedPouch()) {
 			new SeedPouch().collect();
+		}
+
+		if (PixelDungeon.freeScrollHolder()) {
+			new ScrollHolder().collect();
 		}
 
 		if (PixelDungeon.freeWandHolster()) {
