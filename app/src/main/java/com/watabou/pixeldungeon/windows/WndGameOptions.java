@@ -13,6 +13,7 @@ public class WndGameOptions extends Window {
 
 	private static final String TXT_DISABLE_NIGHT_MODE     	= "Disable Night Mode";
 	private static final String TXT_AUTO_IDENTIFY		= "Auto-Identify Items";
+	private static final String TXT_KEEP_SAVE_FILES		= "Keep Save Files";
 	private static final String TXT_CHOOSE_ENCHANTMENTS	= "Choose Enchantments";
 	private static final String TXT_KEEP_ENCHANTMENTS	= "Keep Enchantments";
 	private static final String TXT_UPGRADE_SCROLLS		= "Random Upgrade Scrolls";
@@ -46,6 +47,18 @@ public class WndGameOptions extends Window {
 		btnAutoIdentify.checked( PixelDungeon.autoIdentify() );
 		add( btnAutoIdentify );
 
+		final CheckBox btnKeepSaveFiles = new CheckBox( TXT_KEEP_SAVE_FILES ) {
+			@Override
+			protected void onClick() {
+				super.onClick();
+				PixelDungeon.keepSaveFiles( checked() );
+				Sample.INSTANCE.play(Assets.SND_CLICK);
+			}
+		};
+		btnKeepSaveFiles.setRect( 0, btnAutoIdentify.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnKeepSaveFiles.checked( PixelDungeon.keepSaveFiles() );
+		add( btnKeepSaveFiles );
+
 		final CheckBox btnChooseEnchantments = new CheckBox( TXT_CHOOSE_ENCHANTMENTS ) {
 			@Override
 			protected void onClick() {
@@ -54,7 +67,7 @@ public class WndGameOptions extends Window {
 				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
-		btnChooseEnchantments.setRect( 0, btnAutoIdentify.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnChooseEnchantments.setRect( 0, btnKeepSaveFiles.bottom() + GAP, WIDTH, BTN_HEIGHT );
 		btnChooseEnchantments.checked( PixelDungeon.chooseEnchantments() );
 		add( btnChooseEnchantments );
 
