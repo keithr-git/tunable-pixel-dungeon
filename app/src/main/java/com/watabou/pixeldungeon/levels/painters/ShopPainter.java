@@ -20,6 +20,7 @@ package com.watabou.pixeldungeon.levels.painters;
 import java.util.ArrayList;
 
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.actors.mobs.npcs.ImpShopkeeper;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Shopkeeper;
@@ -135,7 +136,12 @@ public class ShopPainter extends Painter {
 			items.add( Generator.random( Generator.Category.POTION ) );
 		}
 		
-		items.add( new ScrollOfIdentify() );
+		if (PixelDungeon.autoIdentify()) {
+			items.add( Generator.random( Generator.Category.SCROLL ) );
+		} else {
+			items.add( new ScrollOfIdentify() );
+		}
+
 		items.add( new ScrollOfRemoveCurse() );
 		items.add( new ScrollOfMagicMapping() );
 		items.add( Generator.random( Generator.Category.SCROLL ) );
