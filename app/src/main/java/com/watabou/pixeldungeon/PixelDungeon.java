@@ -395,6 +395,15 @@ public class PixelDungeon extends Game {
 	public static boolean freeWandHolster() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_WAND_HOLSTER, false );
 	}
+
+	public static void freeLloydsBeacon(boolean value) {
+		Preferences.INSTANCE.put( Preferences.KEY_FREE_LLOYDS_BEACON, value );
+	}
+
+	public static boolean freeLloydsBeacon() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_LLOYDS_BEACON, false );
+	}
+
 	public static void hungerRate( float value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_HUNGER_RATE, value );
 	}

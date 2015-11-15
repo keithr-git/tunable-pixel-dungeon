@@ -23,6 +23,7 @@ import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.items.DewVial;
 import com.watabou.pixeldungeon.items.Dewdrop;
+import com.watabou.pixeldungeon.items.LloydsBeacon;
 import com.watabou.pixeldungeon.items.TomeOfMastery;
 import com.watabou.pixeldungeon.items.armor.ClothArmor;
 import com.watabou.pixeldungeon.items.bags.Keyring;
@@ -138,6 +139,10 @@ public enum HeroClass {
 
 		if (PixelDungeon.freeWandHolster()) {
 			new WandHolster().collect();
+		}
+
+		if (PixelDungeon.freeLloydsBeacon()) {
+			new LloydsBeacon().collect();
 		}
 	}
 	

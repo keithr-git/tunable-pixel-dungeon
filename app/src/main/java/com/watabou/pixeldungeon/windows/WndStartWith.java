@@ -14,6 +14,7 @@ public class WndStartWith extends Window {
 	private static final String TXT_SEED_POUCH	= "Seed Pouch";
 	private static final String TXT_SCROLL_HOLDER	= "Scroll Holder";
 	private static final String TXT_WAND_HOLSTER	= "Wand Holster";
+	private static final String TXT_LLOYDS_BEACON	= "Lloyd's Beacon";
 
 	private static final int WIDTH		= 112;
 	private static final int BTN_HEIGHT	= 20;
@@ -68,6 +69,18 @@ public class WndStartWith extends Window {
 		btnFreeWandHolster.checked( PixelDungeon.freeWandHolster() );
 		add( btnFreeWandHolster );
 
-		resize( WIDTH, (int) btnFreeWandHolster.bottom() );
+		final CheckBox btnFreeLloydsBeacon = new CheckBox( TXT_LLOYDS_BEACON ) {
+			@Override
+			protected void onClick() {
+				super.onClick();
+				PixelDungeon.freeLloydsBeacon( checked() );
+				Sample.INSTANCE.play( Assets.SND_CLICK);
+			}
+		};
+		btnFreeLloydsBeacon.setRect( 0, btnFreeWandHolster.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnFreeLloydsBeacon.checked( PixelDungeon.freeLloydsBeacon() );
+		add( btnFreeLloydsBeacon );
+
+		resize( WIDTH, (int) btnFreeLloydsBeacon.bottom() );
 	}
 }

@@ -21,6 +21,7 @@ import java.util.HashSet;
 
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.blobs.ToxicGas;
@@ -53,8 +54,10 @@ public class Goo extends Mob {
 		defenseSkill = 12;
 		spriteClass = GooSprite.class;
 		
-		loot = new LloydsBeacon();
-		lootChance = 0.333f;
+		if (!PixelDungeon.freeLloydsBeacon()) {
+			loot = new LloydsBeacon();
+			lootChance = 0.333f;
+		}
 	}
 	
 	private boolean pumpedUp	= false;
