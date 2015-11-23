@@ -20,6 +20,7 @@ package com.watabou.pixeldungeon.actors.mobs;
 import java.util.HashSet;
 
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.ResultDescriptions;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
@@ -56,7 +57,7 @@ public class Eye extends Mob {
 		flying = true;
 		
 		loot = new Dewdrop();
-		lootChance = 0.5f;
+		lootChance = (PixelDungeon.guaranteedBossDrops()) ? 1.0f : 0.5f;
 	}
 	
 	@Override

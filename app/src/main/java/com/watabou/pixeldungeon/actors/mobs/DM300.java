@@ -24,6 +24,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
@@ -56,7 +57,7 @@ public class DM300 extends Mob {
 		defenseSkill = 18;
 		
 		loot = new RingOfThorns().random();
-		lootChance = 0.333f;
+		lootChance = (PixelDungeon.guaranteedBossDrops()) ? 1.0f : 0.333f;
 	}
 	
 	@Override

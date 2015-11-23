@@ -56,7 +56,7 @@ public class Goo extends Mob {
 		
 		if (!PixelDungeon.freeLloydsBeacon()) {
 			loot = new LloydsBeacon();
-			lootChance = 0.333f;
+			lootChance = (PixelDungeon.guaranteedBossDrops()) ? 1.0f : 0.333f;
 		}
 	}
 	
