@@ -43,7 +43,7 @@ public class MeleeWeapon extends Weapon {
 	}
 	
 	protected int max0() {
-		return (int)((tier * tier - tier + 10) / ACU * DLY);
+		return (int)(((((tier * tier) - tier + 10) / ACU) * DLY) + .001F);
 	}
 	
 	@Override
