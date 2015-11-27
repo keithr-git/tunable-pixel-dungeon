@@ -430,7 +430,8 @@ public class Badges {
 	
 	public static void validateAllPotionsIdentified() {
 		if (Dungeon.hero != null && Dungeon.hero.isAlive() && 
-			!local.contains( Badge.ALL_POTIONS_IDENTIFIED ) && Potion.allKnown()) {
+			!local.contains( Badge.ALL_POTIONS_IDENTIFIED ) && Potion.allKnown() &&
+			!PixelDungeon.autoIdentify()) {
 			
 			Badge badge = Badge.ALL_POTIONS_IDENTIFIED;
 			local.add( badge );
@@ -442,7 +443,8 @@ public class Badges {
 	
 	public static void validateAllScrollsIdentified() {
 		if (Dungeon.hero != null && Dungeon.hero.isAlive() && 
-			!local.contains( Badge.ALL_SCROLLS_IDENTIFIED ) && Scroll.allKnown()) {
+			!local.contains( Badge.ALL_SCROLLS_IDENTIFIED ) && Scroll.allKnown() &&
+			!PixelDungeon.autoIdentify()) {
 			
 			Badge badge = Badge.ALL_SCROLLS_IDENTIFIED;
 			local.add( badge );
@@ -454,7 +456,8 @@ public class Badges {
 	
 	public static void validateAllRingsIdentified() {
 		if (Dungeon.hero != null && Dungeon.hero.isAlive() && 
-			!local.contains( Badge.ALL_RINGS_IDENTIFIED ) && Ring.allKnown()) {
+			!local.contains( Badge.ALL_RINGS_IDENTIFIED ) && Ring.allKnown() &&
+			!PixelDungeon.autoIdentify()) {
 			
 			Badge badge = Badge.ALL_RINGS_IDENTIFIED;
 			local.add( badge );
@@ -479,11 +482,11 @@ public class Badges {
 	public static void validateAllBagsBought( Item bag ) {
 		
 		Badge badge = null;
-		if (bag instanceof SeedPouch) {
+		if (bag instanceof SeedPouch  && !PixelDungeon.freeSeedPouch()) {
 			badge = Badge.BAG_BOUGHT_SEED_POUCH;
-		} else if (bag instanceof ScrollHolder) {
+		} else if (bag instanceof ScrollHolder && !PixelDungeon.freeScrollHolder()) {
 			badge = Badge.BAG_BOUGHT_SCROLL_HOLDER;
-		} else if (bag instanceof WandHolster) {
+		} else if (bag instanceof WandHolster && !PixelDungeon.freeWandHolster()) {
 			badge = Badge.BAG_BOUGHT_WAND_HOLSTER;
 		}
 		
