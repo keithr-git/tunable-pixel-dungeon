@@ -1,13 +1,9 @@
 Add a scrollable message history.
 
-Don't generate a Well of Identification if Auto Identify is set.
-
 Select enchantment earlier, and add a "never mind" button.
 
 Figure out how to make a window scrollable, and do that for all the new windows
 I've added.
-
-Add a "guaranteed boss drops" option.
 
 Rename the game to "tunable pixel dungeon" and the app to
 com.keithr.tunable-pixel-dungeon.
