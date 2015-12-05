@@ -1,6 +1,8 @@
 package com.watabou.pixeldungeon.windows;
 
+import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.pixeldungeon.PixelDungeon;
+import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.Window;
 
@@ -12,11 +14,12 @@ public class WndGameTunables extends Window {
 	private static final String TXT_DEGRADATION_RATE	= "Degradation Rate:";
 	private static final String TXT_TREASURE_AMOUNT		= "Treasure Amount: ";
 
-	private static final String TXT_RESET_DEFAULTS		= "Reset to Defaults";
+	private static final String TXT_RESET_DEFAULTS		= "Press middle button to reset to 1.0.";
 
 	private static final int WIDTH				= 112;
 	private static final int BTN_HEIGHT			= 20;
 	private static final int GAP 				= 2;
+	private static final int MARGIN				= 2;
 
 	private class FloatValue {
 		RedButton btnMinus;
@@ -34,7 +37,7 @@ public class WndGameTunables extends Window {
 					float value = getValue();
 
 					value -= 0.1;
-					updateLabel( value );
+					updateValue( value );
 				}
 			};
 			add( btnMinus.setRect( 0, offset, w, BTN_HEIGHT ) );
@@ -45,17 +48,22 @@ public class WndGameTunables extends Window {
 					float value = getValue();
 
 					value += 0.1;
-					updateLabel( value );
+					updateValue( value );
 				}
 			};
 			add( btnPlus.setRect( WIDTH - w, offset, w, BTN_HEIGHT ) );
 
-			btnLabel = new RedButton( prefix );
+			btnLabel = new RedButton( prefix ) {
+				@Override
+				protected void onClick() {
+					updateValue( 1.0F );
+				}
+			};
 			add ( btnLabel.setRect( btnMinus.right(), offset, WIDTH - btnPlus.width() - btnMinus.width(), BTN_HEIGHT ) );
-			updateLabel( getValue() );
+			updateValue( getValue() );
 		}
 
-		void updateLabel(float value) {
+		void updateValue(float value) {
 			if (value < 0.09) {
 				btnMinus.enable( false );
 				value = 0.0F;
@@ -67,8 +75,8 @@ public class WndGameTunables extends Window {
 			btnLabel.text( prefix + String.format( " %4.1f", value ) );
 		}
 
-		void updateLabel() {
-			updateLabel( getValue() );
+		void updateValue() {
+			updateValue( getValue() );
 		}
 
 		float getValue() {
@@ -83,7 +91,15 @@ public class WndGameTunables extends Window {
 	}
 
 	public WndGameTunables () {
-		final FloatValue btnHungerRate = new FloatValue( this, 0, TXT_HUNGER_RATE ) {
+		BitmapTextMultiline tfReset = PixelScene.createMultiline( TXT_RESET_DEFAULTS, 6 );
+		tfReset.hardlight( TITLE_COLOR );
+		tfReset.maxWidth = WIDTH - MARGIN;
+		tfReset.measure();
+		tfReset.x = MARGIN;
+		tfReset.y = GAP;
+		add(tfReset);
+
+		final FloatValue btnHungerRate = new FloatValue( this, tfReset.y + tfReset.height() + GAP, TXT_HUNGER_RATE ) {
 			@Override
 			float getValue() {
 				return PixelDungeon.hungerRate();
@@ -120,21 +136,6 @@ public class WndGameTunables extends Window {
 			}
 		};
 
-		RedButton btnResetToDefaults = new RedButton( TXT_RESET_DEFAULTS ) {
-			@Override
-			protected void onClick() {
-				PixelDungeon.hungerRate( 1.0F );
-				PixelDungeon.degradationRate( 1.0F );
-				PixelDungeon.treasureAmount( 1.0F );
-
-				btnHungerRate.updateLabel();
-				btnUseRate.updateLabel();
-				btnTreasureAmount.updateLabel();
-			}
-		};
-		btnResetToDefaults.setRect( 0, btnTreasureAmount.bottom() + GAP, WIDTH, BTN_HEIGHT );
-		add( btnResetToDefaults );
-
-		resize( WIDTH, (int) btnResetToDefaults.bottom() );
+		resize( WIDTH, (int) btnTreasureAmount.bottom() );
 	}
 }
