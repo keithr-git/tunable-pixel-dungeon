@@ -373,7 +373,7 @@ public abstract class Mob extends Char {
 	
 	@SuppressWarnings("unchecked")
 	protected void dropLoot() {
-		if (loot != null && Random.Float() < lootChance) {
+		if (loot != null && Random.Float() < (lootChance * PixelDungeon.treasureAmount())) {
 			Item item = null;
 			if (loot instanceof Generator.Category) {
 				
