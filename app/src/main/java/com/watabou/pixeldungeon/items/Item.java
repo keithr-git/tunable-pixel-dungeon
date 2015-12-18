@@ -541,7 +541,7 @@ public class Item implements Bundlable {
 		cursed	= bundle.getBoolean( CURSED );
 		
 		if (isUpgradable()) {
-			durability = bundle.getInt( DURABILITY );
+			durability = bundle.getFloat( DURABILITY );
 		}
 		
 		QuickSlot.restore( bundle, this );
