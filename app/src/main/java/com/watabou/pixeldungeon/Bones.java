@@ -108,7 +108,10 @@ public class Bones {
 						if (lvl < item.level()) {
 							item.degrade( item.level() - lvl );
 						}
-						item.levelKnown = false;
+                                                if (PixelDungeon.autoIdentify())
+                                                    item.levelKnown = true;
+                                                else
+                                                    item.levelKnown = false;
 					}
 				}
 				
