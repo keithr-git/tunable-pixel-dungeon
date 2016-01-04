@@ -740,7 +740,7 @@ public class Hero extends Char {
 					ready();
 				} else {
 					Dungeon.win( ResultDescriptions.WIN );
-					Dungeon.deleteGame( Dungeon.hero.heroClass, true );
+					Dungeon.deleteGame( Dungeon.hero.heroClass, true, true );
 					Game.switchScene( SurfaceScene.class );
 				}
 				
@@ -1159,7 +1159,7 @@ public class Hero extends Char {
 			
 		} else {
 			
-			Dungeon.deleteGame( Dungeon.hero.heroClass, false );
+			Dungeon.deleteGame( Dungeon.hero.heroClass, false, true );
 			GameScene.show( new WndResurrect( ankh, cause ) );
 			
 		}
@@ -1220,9 +1220,7 @@ public class Hero extends Char {
 			((Hero.Doom)cause).onDeath();
 		}
 		
-		if (!PixelDungeon.keepSaveFiles()) {
-			Dungeon.deleteGame( Dungeon.hero.heroClass, true );
-		}
+		Dungeon.deleteGame( Dungeon.hero.heroClass, true );
 	}
 	
 	@Override

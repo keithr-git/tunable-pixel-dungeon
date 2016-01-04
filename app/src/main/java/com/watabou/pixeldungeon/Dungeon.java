@@ -552,8 +552,11 @@ public class Dungeon {
 		return (Level)bundle.get( "level" );
 	}
 	
-	public static void deleteGame( HeroClass cl, boolean deleteLevels ) {
-		
+	public static void deleteGame( HeroClass cl, boolean deleteLevels, boolean force ) {
+
+		if (!force && PixelDungeon.keepSaveFiles())
+			return;
+
 		Game.instance.deleteFile( gameFile( cl ) );
 		
 		if (deleteLevels) {
@@ -565,7 +568,11 @@ public class Dungeon {
 		
 		GamesInProgress.delete( cl );
 	}
-	
+
+	public static void deleteGame( HeroClass cl, boolean deleteLevels ) {
+		deleteGame(cl, deleteLevels, false);
+	}
+
 	public static Bundle gameBundle( String fileName ) throws IOException {
 		
 		InputStream input = Game.instance.openFileInput( fileName );
