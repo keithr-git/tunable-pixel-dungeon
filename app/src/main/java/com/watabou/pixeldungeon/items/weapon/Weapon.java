@@ -274,7 +274,7 @@ abstract public class Weapon extends KindOfWeapon {
 		}
 
 		public static void choose( final Weapon weapon ) {
-			GameScene.show (new WndOptions( null, null,
+			GameScene.show (new WndOptions( 12, null, null,
 				Fire.enchantmentName(), Poison.enchantmentName(), Death.enchantmentName(), Paralysis.enchantmentName(),
 				Leech.enchantmentName(), Slow.enchantmentName(), Shock.enchantmentName(), Instability.enchantmentName(),
 				Horror.enchantmentName(), Luck.enchantmentName(), Tempering.enchantmentName() ) {

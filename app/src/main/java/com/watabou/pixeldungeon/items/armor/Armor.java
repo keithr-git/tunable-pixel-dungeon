@@ -393,7 +393,7 @@ public class Armor extends EquipableItem {
 		}
 
 		public static void choose( final Armor armor ) {
-			GameScene.show( new WndOptions( null, null,
+			GameScene.show( new WndOptions( 12, null, null,
 				Bounce.glyphName(), Affection.glyphName(), AntiEntropy.glyphName(), Multiplicity.glyphName(),
 				Potential.glyphName(), Metabolism.glyphName(), Stench.glyphName(), Viscosity.glyphName(),
 				Displacement.glyphName(), Entanglement.glyphName(), AutoRepair.glyphName() ) {

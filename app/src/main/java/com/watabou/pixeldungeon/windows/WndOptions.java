@@ -26,11 +26,21 @@ public class WndOptions extends Window {
 
 	private static final int WIDTH			= 120;
 	private static final int MARGIN 		= 2;
-	private static final int BUTTON_HEIGHT	= 20;
-	
+	private static final int BUTTON_HEIGHT		= 20;
+
 	public WndOptions( String title, String message, String... options ) {
 		super();
 
+		init(BUTTON_HEIGHT, title, message, options);
+	}
+	
+	public WndOptions( int buttonHeight, String title, String message, String... options) {
+		super();
+
+		init(buttonHeight, title, message, options);
+	}
+
+	private void init( int buttonHeight, String title, String message, String... options ) {
 		float pos = MARGIN;
 
 		if (title != null) {
@@ -63,10 +73,10 @@ public class WndOptions extends Window {
 					onSelect( index );
 				}
 			};
-			btn.setRect( MARGIN, pos, WIDTH - MARGIN * 2, BUTTON_HEIGHT );
+			btn.setRect( MARGIN, pos, WIDTH - MARGIN * 2, buttonHeight );
 			add( btn );
 			
-			pos += BUTTON_HEIGHT + MARGIN;
+			pos += buttonHeight + MARGIN;
 		}
 		
 		resize( WIDTH, (int)pos );
