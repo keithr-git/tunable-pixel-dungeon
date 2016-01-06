@@ -59,8 +59,9 @@ public class ScrollPane extends Component {
 		Camera.remove( content.camera );
 	}
 	
-	public void scrollTo( float x, float y ) {
-		content.camera.scroll.set( x, y );
+	public void scrollTo( float scrollX, float scrollY ) {
+		content.camera.scroll.set( scrollX, scrollY );
+		thumb.y = y + height * content.camera.scroll.y / content.height();
 	}
 	
 	@Override
@@ -68,7 +69,7 @@ public class ScrollPane extends Component {
 		controller = new TouchController();
 		add( controller );
 		
-		thumb = new ColorBlock( 1, 1,THUMB_COLOR );
+		thumb = new ColorBlock( 2, 1, THUMB_COLOR );
 		thumb.am = THUMB_ALPHA;
 		add( thumb );
 	}
