@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/app.iml" filepath="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/app/app.iml" />
-      <module fileurl="file:///Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/tunable-pixel-dungeon.iml" filepath="/Volumes/Private/Android/StudioProjects/tunable-pixel-dungeon/tunable-pixel-dungeon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tunable-pixel-dungeon.iml" filepath="$PROJECT_DIR$/tunable-pixel-dungeon.iml" />
     </modules>
   </component>
 </project>
