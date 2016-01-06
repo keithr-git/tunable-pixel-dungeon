@@ -26,6 +26,7 @@ import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.Statistics;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.items.Generator;
@@ -226,6 +227,11 @@ public class InterlevelScene extends PixelScene {
 			level = Dungeon.loadLevel( Dungeon.hero.heroClass );
 		}
 		Dungeon.switchLevel( level, level.entrance );
+
+		if (Dungeon.depth == 1 && PixelDungeon.keepSaveFiles()) {
+			// Save now in case we die on the first level.
+			Dungeon.saveAll();
+		}
 	}
 	
 	private void fall() throws Exception {
