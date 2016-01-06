@@ -17,9 +17,6 @@
  */
 package com.watabou.pixeldungeon.ui;
 
-import java.util.ArrayList;
-import java.util.regex.Pattern;
-
 import com.watabou.noosa.BitmapTextMultiline;
 import com.watabou.noosa.ui.Component;
 import com.watabou.pixeldungeon.scenes.PixelScene;
@@ -27,6 +24,9 @@ import com.watabou.pixeldungeon.sprites.CharSprite;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Signal;
+
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class GameLog extends Component implements Signal.Listener<String> {
 
@@ -38,6 +38,22 @@ public class GameLog extends Component implements Signal.Listener<String> {
 	private int lastColor;
 
 	private static ArrayList<Entry> entries = new ArrayList<Entry>();
+	private static ArrayList<Entry> allEntries = new ArrayList<Entry>();
+
+	public static ArrayList<BitmapTextMultiline> LogEntries() {
+		ArrayList<BitmapTextMultiline> logEntries = new ArrayList<BitmapTextMultiline>();
+
+		for (Entry entry: allEntries) {
+			if (entry == null)
+				continue;
+
+			BitmapTextMultiline logEntry = PixelScene.createMultiline( entry.text, 6 );
+			logEntry.hardlight( entry.color );
+			logEntries.add(logEntry);
+		}
+
+		return logEntries;
+	}
 	
 	public GameLog() {
 		super();
@@ -89,6 +105,7 @@ public class GameLog extends Component implements Signal.Listener<String> {
 			lastEntry.measure();
 
 			entries.get( entries.size() - 1 ).text = lastEntry.text();
+			allEntries.get( allEntries.size() - 1 ).text = lastEntry.text();
 			
 		} else {
 			
@@ -98,6 +115,7 @@ public class GameLog extends Component implements Signal.Listener<String> {
 			add( lastEntry );
 
 			entries.add( new Entry( text, color ) );
+			allEntries.add( new Entry( text, color ) );
 			
 		}
 
@@ -153,5 +171,6 @@ public class GameLog extends Component implements Signal.Listener<String> {
 
 	public static void wipe() {
 		entries.clear();
+		allEntries.clear();
 	}
 }

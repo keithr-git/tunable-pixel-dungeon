@@ -95,7 +95,8 @@ public class WndHero extends WndTabbed {
 		private static final String TXT_TITLE		= "Level %d %s";
 		private static final String TXT_CATALOGUS	= "Catalogus";
 		private static final String TXT_JOURNAL		= "Journal";
-		
+		private static final String TXT_LOG		= "Log";
+
 		private static final int GAP = 5;
 		
 		private float pos;
@@ -131,6 +132,18 @@ public class WndHero extends WndTabbed {
 				btnCatalogus.right() + 1, btnCatalogus.top(), 
 				btnJournal.reqWidth() + 2, btnJournal.reqHeight() + 2 );
 			add( btnJournal );
+
+			RedButton btnLog = new RedButton( TXT_LOG ) {
+				@Override
+				protected void onClick() {
+					hide();
+					GameScene.show( new WndLog() );
+				}
+			};
+			btnLog.setRect(
+				btnJournal.right() + 1, btnJournal.top(),
+				btnLog.reqWidth() + 2, btnLog.reqHeight() + 2 );
+			add( btnLog );
 			
 			pos = btnCatalogus.bottom() + GAP;
 			
