@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.scenes;
 
-import javax.microedition.khronos.opengles.GL10;
-
 import android.opengl.GLES20;
 
 import com.watabou.noosa.BitmapText;
@@ -35,6 +33,8 @@ import com.watabou.pixeldungeon.effects.Fireball;
 import com.watabou.pixeldungeon.ui.Archs;
 import com.watabou.pixeldungeon.ui.ExitButton;
 import com.watabou.pixeldungeon.ui.PrefsButton;
+
+import javax.microedition.khronos.opengles.GL10;
 
 public class TitleScene extends PixelScene {
 
@@ -89,7 +89,14 @@ public class TitleScene extends PixelScene {
 		signs.x = title.x;
 		signs.y = title.y;
 		add( signs );
-		
+
+		BitmapText tunable = new BitmapText( "Tunable", font15x );
+		tunable.measure();
+		tunable.hardlight( 0xC0C0C0 );
+		tunable.x = (w - tunable.width()) / 2;
+		tunable.y = title.y - (tunable.height() / 4);
+		add( tunable );
+
 		DashboardItem btnBadges = new DashboardItem( TXT_BADGES, 3 ) {
 			@Override
 			protected void onClick() {
