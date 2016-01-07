@@ -37,6 +37,7 @@ public class AboutScene extends PixelScene {
 
 	private static final String TXT = 
 		"Code & graphics: Watabou\n" +
+		"Tunable Modifications: keithr\n" +
 		"Music: Cube_Code\n\n" + 
 		"This game is inspired by Brian Walker's Brogue. " +
 		"Try it on Windows, Mac OS or Linux - it's awesome! ;)\n\n" +
