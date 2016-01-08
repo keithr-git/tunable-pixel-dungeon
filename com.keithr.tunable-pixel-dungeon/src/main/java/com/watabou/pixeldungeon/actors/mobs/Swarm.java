@@ -17,9 +17,8 @@
  */
 package com.watabou.pixeldungeon.actors.mobs;
 
-import java.util.ArrayList;
-
 import com.watabou.pixeldungeon.Dungeon;
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
@@ -34,6 +33,8 @@ import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.SwarmSprite;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class Swarm extends Mob {
 
@@ -131,7 +132,8 @@ public class Swarm extends Mob {
 	
 	@Override
 	protected void dropLoot() {
-		if (Random.Int( 5 * (generation + 1) ) == 0) {
+		if ((int) (Random.Int( 5 * (generation + 1) ) /
+                            PixelDungeon.treasureAmount()) == 0) {
 			Dungeon.level.drop( new PotionOfHealing(), pos ).sprite.drop();
 		}
 	}
