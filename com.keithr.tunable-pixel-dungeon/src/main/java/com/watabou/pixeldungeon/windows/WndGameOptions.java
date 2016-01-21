@@ -18,6 +18,7 @@ public class WndGameOptions extends Window {
 	private static final String TXT_CHOOSE_ENCHANTMENTS	= "Choose Enchantments";
 	private static final String TXT_KEEP_ENCHANTMENTS	= "Keep Enchantments";
 	private static final String TXT_UPGRADE_SCROLLS		= "Random Upgrade Scrolls";
+	private static final String TXT_KEYRING_COLLECTS_RINGS	= "Keyring Collects Rings";
 
 	private static final int WIDTH				= 112;
 	private static final int BTN_HEIGHT			= 20;
@@ -108,6 +109,18 @@ public class WndGameOptions extends Window {
 		btnUpgradeScrolls.checked( PixelDungeon.upgradeScrolls() );
 		add( btnUpgradeScrolls );
 
-		resize( WIDTH, (int) btnUpgradeScrolls.bottom() );
+		final CheckBox btnKeyringCollectsRings = new CheckBox( TXT_KEYRING_COLLECTS_RINGS ) {
+			@Override
+			protected void onClick() {
+				super.onClick();
+				PixelDungeon.keyringCollectsRings( checked() );
+				Sample.INSTANCE.play(Assets.SND_CLICK);
+			}
+		};
+		btnKeyringCollectsRings.setRect( 0, btnUpgradeScrolls.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnKeyringCollectsRings.checked( PixelDungeon.keyringCollectsRings() );
+		add( btnKeyringCollectsRings );
+
+		resize( WIDTH, (int) btnKeyringCollectsRings.bottom() );
 	}
 }

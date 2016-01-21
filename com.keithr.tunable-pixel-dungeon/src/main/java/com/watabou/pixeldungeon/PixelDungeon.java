@@ -412,6 +412,14 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_LLOYDS_BEACON, false );
 	}
 
+	public static void keyringCollectsRings(boolean value) {
+		Preferences.INSTANCE.put( Preferences.KEY_KEYRING_COLLECTS_RINGS, value );
+	}
+
+	public static boolean keyringCollectsRings() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_KEYRING_COLLECTS_RINGS, false );
+	}
+
 	public static void healingRate( float value ) {
 		Preferences.INSTANCE.put( Preferences.KEY_HEALING_RATE, value );
 	}

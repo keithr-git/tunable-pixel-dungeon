@@ -17,8 +17,10 @@
  */
 package com.watabou.pixeldungeon.items.bags;
 
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.keys.Key;
+import com.watabou.pixeldungeon.items.rings.Ring;
 import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 
 public class Keyring extends Bag {
@@ -27,12 +29,12 @@ public class Keyring extends Bag {
 		name = "key ring";
 		image = ItemSpriteSheet.KEYRING;
 		
-		size = 12;
+		size = 18;
 	}
-	
+
 	@Override
 	public boolean grab( Item item ) {
-		return item instanceof Key;
+		return item instanceof Key || (item instanceof Ring && PixelDungeon.keyringCollectsRings());
 	}
 	
 	@Override
@@ -42,8 +44,14 @@ public class Keyring extends Bag {
 	
 	@Override
 	public String info() {
-		return
-			"This is a copper key ring, that lets you keep all your keys " +
-			"separately from the rest of your belongings.";
+		if (PixelDungeon.keyringCollectsRings()) {
+			return
+				"This is a copper key ring, that lets you keep all your keys " +
+					"and rings separately from the rest of your belongings.";
+		} else {
+			return
+				"This is a copper key ring, that lets you keep all your keys " +
+					"separately from the rest of your belongings.";
+		}
 	}
 }

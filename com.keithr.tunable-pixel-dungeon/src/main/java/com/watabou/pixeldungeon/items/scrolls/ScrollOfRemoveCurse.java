@@ -25,6 +25,8 @@ import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.effects.Flare;
 import com.watabou.pixeldungeon.effects.particles.ShadowParticle;
 import com.watabou.pixeldungeon.items.Item;
+import com.watabou.pixeldungeon.items.bags.Bag;
+import com.watabou.pixeldungeon.items.bags.Keyring;
 import com.watabou.pixeldungeon.utils.GLog;
 
 public class ScrollOfRemoveCurse extends Scroll {
@@ -45,12 +47,17 @@ public class ScrollOfRemoveCurse extends Scroll {
 		Sample.INSTANCE.play( Assets.SND_READ );
 		Invisibility.dispel();
 		
-		boolean procced = uncurse( curUser, curUser.belongings.backpack.items.toArray( new Item[0] ) ); 
-		procced = uncurse( curUser, 
+		boolean procced = uncurse( curUser, curUser.belongings.backpack.items.toArray( new Item[0] ) );
+		procced = uncurse( curUser,
 			curUser.belongings.weapon, 
 			curUser.belongings.armor, 
 			curUser.belongings.ring1, 
 			curUser.belongings.ring2 ) || procced;
+
+		// The keyring might have cursed rings.
+		Bag keyring = curUser.belongings.getItem( Keyring.class );
+		if (keyring != null)
+			procced = uncurse( curUser, keyring.items.toArray( new Item[0] ) ) || procced;
 		
 		Weakness.detach( curUser, Weakness.class );
 		
