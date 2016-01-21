@@ -5,6 +5,7 @@ import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.Window;
+import com.watabou.utils.SystemTime;
 
 /**
  * Created by keithr on 11/13/15.
@@ -26,15 +27,55 @@ public class WndGameTunables extends Window {
 		RedButton btnMinus;
 		RedButton btnLabel;
 		String prefix;
+		private class IncrementButton extends RedButton {
+			long holdStart = 0;
+			long lastChange = 0;
+
+			public IncrementButton( String label ) {
+				super(label);
+			}
+
+			@Override
+			protected void onTouchDown() {
+				super.onTouchDown();
+				holdStart = SystemTime.now;
+				lastChange = 0;
+			}
+
+			@Override
+			protected void onTouchUp() {
+				super.onTouchUp();
+
+				if (lastChange == 0)
+					increment();
+
+				holdStart = 0;
+				lastChange = 0;
+			}
+
+			@Override
+			public void update() {
+				super.update();
+
+				long now = SystemTime.now;
+				if (holdStart != 0 && (now - holdStart) > 250 && (now - lastChange) > 50) {
+					increment();
+					lastChange = now;
+				}
+			}
+
+			protected void increment() {
+			}
+		}
 
 		public FloatValue( Window parent, float offset, String prefix_) {
 			int w = (int) (BTN_HEIGHT * 0.6);
 
 			prefix = prefix_;
 
-			btnMinus = new RedButton( "-" ) {
+			btnMinus = new IncrementButton( "-" ) {
 				@Override
-				protected void onClick() {
+				protected void increment() {
 					float value = getValue();
 
 					value -= 0.1;
@@ -43,9 +84,9 @@ public class WndGameTunables extends Window {
 			};
 			add( btnMinus.setRect( 0, offset, w, BTN_HEIGHT ) );
 
-			final RedButton btnPlus = new RedButton( "+" ) {
+			final RedButton btnPlus = new IncrementButton( "+" ) {
 				@Override
-				protected void onClick() {
+				protected void increment() {
 					float value = getValue();
 
 					value += 0.1;
