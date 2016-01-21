@@ -13,6 +13,7 @@ public class WndStartWith extends Window {
 	private static final String TXT_DEW_VIAL	= "Dew Vial";
 	private static final String TXT_SEED_POUCH	= "Seed Pouch";
 	private static final String TXT_SCROLL_HOLDER	= "Scroll Holder";
+	private static final String TXT_POTION_BAG	= "Potion Bag";
 	private static final String TXT_WAND_HOLSTER	= "Wand Holster";
 	private static final String TXT_LLOYDS_BEACON	= "Lloyd's Beacon";
 
@@ -57,6 +58,18 @@ public class WndStartWith extends Window {
 		btnFreeScrollHolder.checked( PixelDungeon.freeScrollHolder() );
 		add( btnFreeScrollHolder );
 
+		final CheckBox btnFreePotionBag = new CheckBox( TXT_POTION_BAG ) {
+			@Override
+			protected void onClick() {
+				super.onClick();
+				PixelDungeon.freePotionBag( checked() );
+				Sample.INSTANCE.play( Assets.SND_CLICK);
+			}
+		};
+		btnFreePotionBag.setRect( 0, btnFreeScrollHolder.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnFreePotionBag.checked( PixelDungeon.freePotionBag() );
+		add( btnFreePotionBag );
+
 		final CheckBox btnFreeWandHolster = new CheckBox( TXT_WAND_HOLSTER ) {
 			@Override
 			protected void onClick() {
@@ -65,7 +78,7 @@ public class WndStartWith extends Window {
 				Sample.INSTANCE.play( Assets.SND_CLICK);
 			}
 		};
-		btnFreeWandHolster.setRect( 0, btnFreeScrollHolder.bottom() + GAP, WIDTH, BTN_HEIGHT );
+		btnFreeWandHolster.setRect( 0, btnFreePotionBag.bottom() + GAP, WIDTH, BTN_HEIGHT );
 		btnFreeWandHolster.checked( PixelDungeon.freeWandHolster() );
 		add( btnFreeWandHolster );
 

@@ -396,6 +396,14 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_SCROLL_HOLDER, false );
 	}
 
+	public static void freePotionBag(boolean value) {
+		Preferences.INSTANCE.put( Preferences.KEY_FREE_POTION_BAG, value );
+	}
+
+	public static boolean freePotionBag() {
+		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_POTION_BAG, false );
+	}
+
 	public static void freeWandHolster(boolean value) {
 		Preferences.INSTANCE.put( Preferences.KEY_FREE_WAND_HOLSTER, value );
 	}

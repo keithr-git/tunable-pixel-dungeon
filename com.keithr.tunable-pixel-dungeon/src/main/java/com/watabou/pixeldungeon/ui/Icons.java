@@ -43,6 +43,7 @@ public enum Icons {
 	BACKPACK,
 	SEED_POUCH,
 	SCROLL_HOLDER,
+	POTION_BAG,
 	WAND_HOLSTER,
 	KEYRING,
 	CHECKED,
@@ -115,6 +116,9 @@ public enum Icons {
 			break;
 		case SCROLL_HOLDER:
 			icon.frame( icon.texture.uvRect( 68, 0, 78, 10 ) );
+			break;
+		case POTION_BAG:
+			icon.frame( icon.texture.uvRect( 62, 45, 76, 59 ) );
 			break;
 		case SEED_POUCH:
 			icon.frame( icon.texture.uvRect( 78, 0, 88, 10 ) );

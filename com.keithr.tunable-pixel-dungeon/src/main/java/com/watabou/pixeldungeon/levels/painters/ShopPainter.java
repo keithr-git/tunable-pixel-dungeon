@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.levels.painters;
 
-import java.util.ArrayList;
-
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
@@ -30,7 +28,11 @@ import com.watabou.pixeldungeon.items.Heap;
 import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.Torch;
 import com.watabou.pixeldungeon.items.Weightstone;
-import com.watabou.pixeldungeon.items.armor.*;
+import com.watabou.pixeldungeon.items.armor.LeatherArmor;
+import com.watabou.pixeldungeon.items.armor.MailArmor;
+import com.watabou.pixeldungeon.items.armor.PlateArmor;
+import com.watabou.pixeldungeon.items.armor.ScaleArmor;
+import com.watabou.pixeldungeon.items.bags.PotionBag;
 import com.watabou.pixeldungeon.items.bags.ScrollHolder;
 import com.watabou.pixeldungeon.items.bags.SeedPouch;
 import com.watabou.pixeldungeon.items.bags.WandHolster;
@@ -39,13 +41,22 @@ import com.watabou.pixeldungeon.items.potions.PotionOfHealing;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfRemoveCurse;
-import com.watabou.pixeldungeon.items.weapon.melee.*;
+import com.watabou.pixeldungeon.items.weapon.melee.BattleAxe;
+import com.watabou.pixeldungeon.items.weapon.melee.Glaive;
+import com.watabou.pixeldungeon.items.weapon.melee.Longsword;
+import com.watabou.pixeldungeon.items.weapon.melee.Mace;
+import com.watabou.pixeldungeon.items.weapon.melee.Quarterstaff;
+import com.watabou.pixeldungeon.items.weapon.melee.Spear;
+import com.watabou.pixeldungeon.items.weapon.melee.Sword;
+import com.watabou.pixeldungeon.items.weapon.melee.WarHammer;
 import com.watabou.pixeldungeon.levels.LastShopLevel;
 import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.levels.Room;
 import com.watabou.pixeldungeon.levels.Terrain;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class ShopPainter extends Painter {
 
@@ -106,6 +117,8 @@ public class ShopPainter extends Painter {
 			items.add( new MailArmor().identify() );
 			if (!PixelDungeon.freeScrollHolder())
 				items.add( new ScrollHolder() );
+			if (!PixelDungeon.freePotionBag())
+				items.add( new PotionBag() );
 			items.add( new Weightstone() );
 			break;
 			
