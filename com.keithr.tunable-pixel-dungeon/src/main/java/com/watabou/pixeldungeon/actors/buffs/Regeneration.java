@@ -17,6 +17,7 @@
  */
 package com.watabou.pixeldungeon.actors.buffs;
 
+import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.rings.RingOfMending;
 
@@ -37,7 +38,7 @@ public class Regeneration extends Buff {
 				bonus += ((RingOfMending.Rejuvenation)buff).level;
 			}
 			
-			spend( (float)(REGENERATION_DELAY / Math.pow( 1.2, bonus )) );
+			spend( (float)(REGENERATION_DELAY / (Math.pow( 1.2, bonus ) * PixelDungeon.healingRate())) );
 			
 		} else {
 			

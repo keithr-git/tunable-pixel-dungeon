@@ -10,6 +10,7 @@ import com.watabou.pixeldungeon.ui.Window;
  * Created by keithr on 11/13/15.
  */
 public class WndGameTunables extends Window {
+	private static final String TXT_HEALING_RATE		= "Healing Rate:     ";
 	private static final String TXT_HUNGER_RATE		= "Hunger Rate:     ";
 	private static final String TXT_DEGRADATION_RATE	= "Degradation Rate:";
 	private static final String TXT_TREASURE_AMOUNT		= "Treasure Amount: ";
@@ -99,7 +100,19 @@ public class WndGameTunables extends Window {
 		tfReset.y = GAP;
 		add(tfReset);
 
-		final FloatValue btnHungerRate = new FloatValue( this, tfReset.y + tfReset.height() + GAP, TXT_HUNGER_RATE ) {
+		final FloatValue btnHealingRate = new FloatValue( this, tfReset.y + tfReset.height() + GAP, TXT_HEALING_RATE ) {
+			@Override
+			float getValue() {
+				return PixelDungeon.healingRate();
+			}
+
+			@Override
+			void setValue( float value ) {
+				PixelDungeon.healingRate( value );
+			}
+		};
+
+		final FloatValue btnHungerRate = new FloatValue( this, btnHealingRate.bottom() + GAP, TXT_HUNGER_RATE ) {
 			@Override
 			float getValue() {
 				return PixelDungeon.hungerRate();

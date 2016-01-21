@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon;
 
-import javax.microedition.khronos.opengles.GL10;
-
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -32,6 +30,8 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.scenes.TitleScene;
+
+import javax.microedition.khronos.opengles.GL10;
 
 public class PixelDungeon extends Game {
 	
@@ -410,6 +410,14 @@ public class PixelDungeon extends Game {
 
 	public static boolean freeLloydsBeacon() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_FREE_LLOYDS_BEACON, false );
+	}
+
+	public static void healingRate( float value ) {
+		Preferences.INSTANCE.put( Preferences.KEY_HEALING_RATE, value );
+	}
+
+	public static float healingRate() {
+		return Preferences.INSTANCE.getFloat( Preferences.KEY_HEALING_RATE, 1.0F );
 	}
 
 	public static void hungerRate( float value ) {

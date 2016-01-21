@@ -17,9 +17,9 @@
  */
 package com.watabou.pixeldungeon;
 
-import com.watabou.noosa.Game;
-
 import android.content.SharedPreferences;
+
+import com.watabou.noosa.Game;
 
 enum Preferences {
 
@@ -50,6 +50,7 @@ enum Preferences {
 	public static final String KEY_FREE_SCROLL_HOLDER	= "free_scroll_holder";
 	public static final String KEY_FREE_WAND_HOLSTER	= "free_wand_holster";
 	public static final String KEY_FREE_LLOYDS_BEACON	= "free_lloyds_beacon";
+	public static final String KEY_HEALING_RATE		= "healing_rate";
 	public static final String KEY_HUNGER_RATE		= "hunger_rate";
 	public static final String KEY_DEGRADATION_RATE		= "degradation_rate";
 	public static final String KEY_TREASURE_AMOUNT		= "treasuer_amount";
