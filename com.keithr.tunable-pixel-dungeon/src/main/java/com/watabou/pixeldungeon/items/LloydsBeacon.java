@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.items;
 
-import java.util.ArrayList;
-
 import com.watabou.noosa.Game;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
@@ -33,6 +31,8 @@ import com.watabou.pixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Bundle;
+
+import java.util.ArrayList;
 
 public class LloydsBeacon extends Item {
 
@@ -97,9 +97,7 @@ public class LloydsBeacon extends Item {
 	
 	@Override
 	public void execute( Hero hero, String action ) {
-		
 		if (action == AC_SET || action == AC_RETURN) {
-			
 			if (Dungeon.bossLevel()) {
 				hero.spend( LloydsBeacon.TIME_TO_USE );
 				GLog.w( TXT_PREVENTING );
@@ -115,7 +113,6 @@ public class LloydsBeacon extends Item {
 		}
 		
 		if (action == AC_SET) {
-			
 			returnDepth = Dungeon.depth;
 			returnPos = hero.pos;
 			
@@ -126,11 +123,9 @@ public class LloydsBeacon extends Item {
 			Sample.INSTANCE.play( Assets.SND_BEACON );
 			
 			GLog.i( TXT_RETURN );
-			
 		} else if (action == AC_RETURN) {
 			
 			if (returnDepth == Dungeon.depth) {
-				reset();
 				WandOfBlink.appear( hero, returnPos );
 				Dungeon.level.press( returnPos, hero );
 				Dungeon.observe();
@@ -138,15 +133,10 @@ public class LloydsBeacon extends Item {
 				InterlevelScene.mode = InterlevelScene.Mode.RETURN;
 				InterlevelScene.returnDepth = returnDepth;
 				InterlevelScene.returnPos = returnPos;
-				reset();
 				Game.switchScene( InterlevelScene.class );
 			}
-			
-			
 		} else {
-			
 			super.execute( hero, action );
-			
 		}
 	}
 	
