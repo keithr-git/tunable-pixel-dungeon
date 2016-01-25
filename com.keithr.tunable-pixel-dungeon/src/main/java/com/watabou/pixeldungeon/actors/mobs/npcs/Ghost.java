@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.actors.mobs.npcs;
 
-import java.util.HashSet;
-
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.tweeners.AlphaTweener;
 import com.watabou.pixeldungeon.Assets;
@@ -52,6 +50,8 @@ import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.pixeldungeon.windows.WndSadGhost;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.util.HashSet;
 
 public class Ghost extends NPC {
 
@@ -272,6 +272,7 @@ public class Ghost extends NPC {
 					Item another;
 					do {
 						another = (Weapon)Generator.random( Generator.Category.WEAPON );
+						another.upgrade();
 					} while (another instanceof MissileWeapon);
 					
 					if (weapon == null || another.level() > weapon.level()) {
@@ -285,6 +286,7 @@ public class Ghost extends NPC {
 					armor = (Armor)Generator.random( Generator.Category.ARMOR );
 					for (int i=0; i < 3; i++) {
 						Item another = Generator.random( Generator.Category.ARMOR );
+						another.upgrade();
 						if (another.level() > armor.level()) {
 							armor = (Armor)another;
 						}
