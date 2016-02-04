@@ -27,6 +27,7 @@ public class WndGameTunables extends Window {
 		RedButton btnMinus;
 		RedButton btnLabel;
 		String prefix;
+
 		private class IncrementButton extends RedButton {
 			long holdStart = 0;
 			long lastChange = 0;
@@ -40,15 +41,12 @@ public class WndGameTunables extends Window {
 				super.onTouchDown();
 				holdStart = SystemTime.now;
 				lastChange = 0;
+				increment();
 			}
 
 			@Override
 			protected void onTouchUp() {
 				super.onTouchUp();
-
-				if (lastChange == 0)
-					increment();
-
 				holdStart = 0;
 				lastChange = 0;
 			}
@@ -58,9 +56,31 @@ public class WndGameTunables extends Window {
 				super.update();
 
 				long now = SystemTime.now;
-				if (holdStart != 0 && (now - holdStart) > 250 && (now - lastChange) > 50) {
-					increment();
+				if (holdStart != 0 && (now - holdStart) > 250
+						&& (now - lastChange) > 50) {
 					lastChange = now;
+					increment();
+				}
+			}
+
+			@Override
+			public void enable(boolean enabled) {
+				super.enable(enabled);
+
+				if (!enabled) {
+					//
+					// The button was disabled because the
+					// value was decremented to 0.0 by the
+					// onTouchDown() handler, or by the
+					// update() handler while the button
+					// was being held down.  That means the
+					// button will never see an onTouchUp()
+					// event, which prevents it from
+					// clearing the "button held down"
+					// state.  Generate an onTouchUp()
+					// event here instead.
+					//
+					onTouchUp();
 				}
 			}
 
