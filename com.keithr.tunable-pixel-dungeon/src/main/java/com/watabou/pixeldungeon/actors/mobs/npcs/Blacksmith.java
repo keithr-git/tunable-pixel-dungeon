@@ -190,17 +190,7 @@ public class Blacksmith extends NPC {
 		return null;
 	}
 	
-	public static void upgrade( Item item1, Item item2 ) {
-		
-		Item first, second;
-		if (item2.isEnchanted() && !item1.isEnchanted()) {
-			first = item2;
-			second = item1;
-		} else {
-			first = item1;
-			second = item2;
-		}
-
+	public static void upgrade( Item first, Item second ) {
 		Sample.INSTANCE.play( Assets.SND_EVOKE );
 		ScrollOfUpgrade.upgrade( Dungeon.hero );
 		Item.evoke( Dungeon.hero );
