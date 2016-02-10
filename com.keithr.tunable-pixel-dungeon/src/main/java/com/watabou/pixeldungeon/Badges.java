@@ -17,15 +17,6 @@
  */
 package com.watabou.pixeldungeon;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-
 import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.actors.mobs.Acidic;
 import com.watabou.pixeldungeon.actors.mobs.Albino;
@@ -47,6 +38,15 @@ import com.watabou.pixeldungeon.scenes.PixelScene;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Callback;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class Badges {
 	
@@ -469,7 +469,8 @@ public class Badges {
 	
 	public static void validateAllWandsIdentified() {
 		if (Dungeon.hero != null && Dungeon.hero.isAlive() && 
-			!local.contains( Badge.ALL_WANDS_IDENTIFIED ) && Wand.allKnown()) {
+			!local.contains( Badge.ALL_WANDS_IDENTIFIED ) && Wand.allKnown() &&
+			!PixelDungeon.autoIdentify()) {
 			
 			Badge badge = Badge.ALL_WANDS_IDENTIFIED;
 			local.add( badge );
