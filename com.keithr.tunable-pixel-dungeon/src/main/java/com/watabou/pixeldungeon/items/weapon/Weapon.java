@@ -221,6 +221,7 @@ abstract public class Weapon extends KindOfWeapon {
 		Enchantment.choose(this);
 	}
 	
+	@Override
 	public boolean isEnchanted() {
 		return enchantment != null;
 	}

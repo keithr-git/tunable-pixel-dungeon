@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.items.armor;
 
-import java.util.ArrayList;
-
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.PixelDungeon;
@@ -26,17 +24,29 @@ import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.items.EquipableItem;
 import com.watabou.pixeldungeon.items.Item;
-import com.watabou.pixeldungeon.items.armor.glyphs.*;
+import com.watabou.pixeldungeon.items.armor.glyphs.Affection;
+import com.watabou.pixeldungeon.items.armor.glyphs.AntiEntropy;
+import com.watabou.pixeldungeon.items.armor.glyphs.AutoRepair;
+import com.watabou.pixeldungeon.items.armor.glyphs.Bounce;
+import com.watabou.pixeldungeon.items.armor.glyphs.Displacement;
+import com.watabou.pixeldungeon.items.armor.glyphs.Entanglement;
+import com.watabou.pixeldungeon.items.armor.glyphs.Metabolism;
+import com.watabou.pixeldungeon.items.armor.glyphs.Multiplicity;
+import com.watabou.pixeldungeon.items.armor.glyphs.Potential;
+import com.watabou.pixeldungeon.items.armor.glyphs.Stench;
+import com.watabou.pixeldungeon.items.armor.glyphs.Viscosity;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.sprites.HeroSprite;
 import com.watabou.pixeldungeon.sprites.ItemSprite;
 import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
+import com.watabou.pixeldungeon.windows.WndOptions;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
-import com.watabou.pixeldungeon.windows.WndOptions;
+
+import java.util.ArrayList;
 
 public class Armor extends EquipableItem {
 	
@@ -306,6 +316,9 @@ public class Armor extends EquipableItem {
 		}
 		return considerState( price );
 	}
+
+	@Override
+	public boolean isEnchanted() { return glyph != null; }
 	
 	public Armor inscribe( Glyph glyph ) {
 		this.glyph = glyph;

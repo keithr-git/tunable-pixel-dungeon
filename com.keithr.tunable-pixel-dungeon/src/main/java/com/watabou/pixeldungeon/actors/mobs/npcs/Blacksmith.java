@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.actors.mobs.npcs;
 
-import java.util.Collection;
-
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.Badges;
@@ -41,6 +39,8 @@ import com.watabou.pixeldungeon.windows.WndBlacksmith;
 import com.watabou.pixeldungeon.windows.WndQuest;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.util.Collection;
 
 public class Blacksmith extends NPC {
 
@@ -193,7 +193,7 @@ public class Blacksmith extends NPC {
 	public static void upgrade( Item item1, Item item2 ) {
 		
 		Item first, second;
-		if (item2.level() > item1.level()) {
+		if (item2.isEnchanted() && !item1.isEnchanted()) {
 			first = item2;
 			second = item1;
 		} else {
@@ -208,7 +208,7 @@ public class Blacksmith extends NPC {
 		if (first.isEquipped( Dungeon.hero )) {
 			((EquipableItem)first).doUnequip( Dungeon.hero, true );
 		}
-		first.upgrade();
+		first.upgrade(second.level() + 1);
 		GLog.p( TXT_LOOKS_BETTER, first.name() );
 		Dungeon.hero.spendAndNext( 2f );
 		Badges.validateItemLevelAquired( first );
