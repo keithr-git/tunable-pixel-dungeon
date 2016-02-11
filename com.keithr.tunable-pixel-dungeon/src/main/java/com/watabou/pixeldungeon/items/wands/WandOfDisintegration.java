@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.items.wands;
 
-import java.util.ArrayList;
-
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.DungeonTilemap;
 import com.watabou.pixeldungeon.actors.Actor;
@@ -32,6 +30,8 @@ import com.watabou.pixeldungeon.mechanics.Ballistica;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.utils.Callback;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class WandOfDisintegration extends Wand {
 
@@ -94,12 +94,11 @@ public class WandOfDisintegration extends Wand {
 	}
 	
 	private int distance() {
-		return level() + 4;
+		return power() + 4;
 	}
 	
 	@Override
 	protected void fx( int cell, Callback callback ) {
-		
 		cell = Ballistica.trace[Math.min( Ballistica.distance, distance() ) - 1];
 		curUser.sprite.parent.add( new DeathRay( curUser.sprite.center(), DungeonTilemap.tileCenterToWorld( cell ) ) );		
 		callback.call();
