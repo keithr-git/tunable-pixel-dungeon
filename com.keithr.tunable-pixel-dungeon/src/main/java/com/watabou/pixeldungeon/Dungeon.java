@@ -17,14 +17,6 @@
  */
 package com.watabou.pixeldungeon;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
-
 import com.watabou.noosa.Game;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
@@ -34,8 +26,8 @@ import com.watabou.pixeldungeon.actors.buffs.Rage;
 import com.watabou.pixeldungeon.actors.hero.Hero;
 import com.watabou.pixeldungeon.actors.hero.HeroClass;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Blacksmith;
-import com.watabou.pixeldungeon.actors.mobs.npcs.Imp;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Ghost;
+import com.watabou.pixeldungeon.actors.mobs.npcs.Imp;
 import com.watabou.pixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.watabou.pixeldungeon.items.Ankh;
 import com.watabou.pixeldungeon.items.Item;
@@ -69,6 +61,14 @@ import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
 
 public class Dungeon {
 	
@@ -252,12 +252,17 @@ public class Dungeon {
 	
 	@SuppressWarnings("deprecation")
 	public static void switchLevel( final Level level, int pos ) {
-		
-                if (PixelDungeon.nightModeDisabled()) {
-			nightMode = false;
-                } else {
-			nightMode = new Date().getHours() < 7;
-                }
+		switch (PixelDungeon.nightMode()) {
+			case PixelDungeon.VALUE_NIGHT_NEVER:
+				nightMode = false;
+				break;
+			case PixelDungeon.VALUE_NIGHT_NORMAL:
+				nightMode = new Date().getHours() < 7;
+				break;
+			case PixelDungeon.VALUE_NIGHT_ALWAYS:
+				nightMode = true;
+				break;
+		}
 		
 		Dungeon.level = level;
 		Actor.init();

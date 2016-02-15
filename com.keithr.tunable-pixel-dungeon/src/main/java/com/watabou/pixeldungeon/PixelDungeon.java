@@ -34,6 +34,9 @@ import com.watabou.pixeldungeon.scenes.TitleScene;
 import javax.microedition.khronos.opengles.GL10;
 
 public class PixelDungeon extends Game {
+	public static final String VALUE_NIGHT_NEVER		= "Never";
+	public static final String VALUE_NIGHT_NORMAL		= "Before 7AM";
+	public static final String VALUE_NIGHT_ALWAYS		= "Always";
 	
 	public PixelDungeon() {
 		super( TitleScene.class );
@@ -316,12 +319,12 @@ public class PixelDungeon extends Game {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_SECOND_QUICKSLOT, false );
 	}
 
-	public static void nightModeDisabled(boolean value) {
+	public static void nightMode(String value) {
 		Preferences.INSTANCE.put( Preferences.KEY_NIGHT_MODE, value );
 	}
 
-	public static boolean nightModeDisabled() {
-		return Preferences.INSTANCE.getBoolean( Preferences.KEY_NIGHT_MODE, false );
+	public static String nightMode() {
+		return Preferences.INSTANCE.getString( Preferences.KEY_NIGHT_MODE, VALUE_NIGHT_NORMAL );
 	}
 
 	public static void autoIdentify( boolean value ) {

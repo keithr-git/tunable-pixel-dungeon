@@ -1,9 +1,8 @@
 package com.watabou.pixeldungeon.windows;
 
-import com.watabou.noosa.audio.Sample;
-import com.watabou.pixeldungeon.Assets;
 import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.ui.CheckBox;
+import com.watabou.pixeldungeon.ui.RedButton;
 import com.watabou.pixeldungeon.ui.Window;
 
 /**
@@ -11,7 +10,8 @@ import com.watabou.pixeldungeon.ui.Window;
  */
 public class WndGameOptions extends Window {
 
-	private static final String TXT_DISABLE_NIGHT_MODE     	= "Disable Night Mode";
+	private static final String TXT_NIGHT_MODE		= "Night Mode: ";
+	private static final String TXT_NIGHT_MODE_TITLE	= "Game is in night mode:";
 	private static final String TXT_AUTO_IDENTIFY		= "Auto-Identify Items";
 	private static final String TXT_KEEP_SAVE_FILES		= "Keep Save Files";
 	private static final String TXT_GUARANTEED_BOSS_DROPS	= "Guaranteed Boss Drops";
@@ -24,17 +24,35 @@ public class WndGameOptions extends Window {
 	private static final int BTN_HEIGHT			= 20;
 	private static final int GAP 				= 2;
 
+	private final RedButton btnNightMode;
+
 	public WndGameOptions() {
-		final CheckBox btnNightMode = new CheckBox( TXT_DISABLE_NIGHT_MODE ) {
+		btnNightMode = new RedButton( TXT_NIGHT_MODE + PixelDungeon.nightMode()) {
 			@Override
 			protected void onClick() {
 				super.onClick();
-				PixelDungeon.nightModeDisabled( checked() );
-				Sample.INSTANCE.play( Assets.SND_CLICK );
+
+				parent.add( new WndOptions( null, TXT_NIGHT_MODE_TITLE, PixelDungeon.VALUE_NIGHT_NEVER, PixelDungeon.VALUE_NIGHT_NORMAL, PixelDungeon.VALUE_NIGHT_ALWAYS ) {
+					@Override
+					protected void onSelect(int index) {
+						switch (index) {
+							case 0:
+								PixelDungeon.nightMode( PixelDungeon.VALUE_NIGHT_NEVER );
+								break;
+							case 1:
+								PixelDungeon.nightMode( PixelDungeon.VALUE_NIGHT_NORMAL );
+								break;
+							case 2:
+								PixelDungeon.nightMode( PixelDungeon.VALUE_NIGHT_ALWAYS );
+								break;
+						}
+
+						btnNightMode.text( TXT_NIGHT_MODE + PixelDungeon.nightMode() );
+					}
+				} );
 			}
 		};
 		btnNightMode.setRect( 0, 0, WIDTH, BTN_HEIGHT );
-		btnNightMode.checked( PixelDungeon.nightModeDisabled() );
 		add( btnNightMode );
 
 		final CheckBox btnAutoIdentify = new CheckBox( TXT_AUTO_IDENTIFY ) {
@@ -42,7 +60,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.autoIdentify( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnAutoIdentify.setRect( 0, btnNightMode.bottom() + GAP, WIDTH, BTN_HEIGHT );
@@ -54,7 +71,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.keepSaveFiles( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnKeepSaveFiles.setRect( 0, btnAutoIdentify.bottom() + GAP, WIDTH, BTN_HEIGHT );
@@ -66,7 +82,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.guaranteedBossDrops( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnGuaranteedBossDrops.setRect( 0, btnKeepSaveFiles.bottom() + GAP, WIDTH, BTN_HEIGHT );
@@ -78,7 +93,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.chooseEnchantments( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnChooseEnchantments.setRect( 0, btnGuaranteedBossDrops.bottom() + GAP, WIDTH, BTN_HEIGHT );
@@ -90,7 +104,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.keepEnchantments( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnKeepEnchantments.setRect( 0, btnChooseEnchantments.bottom() + GAP, WIDTH, BTN_HEIGHT );
@@ -102,7 +115,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.upgradeScrolls( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnUpgradeScrolls.setRect( 0, btnKeepEnchantments.bottom() + GAP, WIDTH, BTN_HEIGHT );
@@ -114,7 +126,6 @@ public class WndGameOptions extends Window {
 			protected void onClick() {
 				super.onClick();
 				PixelDungeon.keyringCollectsRings( checked() );
-				Sample.INSTANCE.play(Assets.SND_CLICK);
 			}
 		};
 		btnKeyringCollectsRings.setRect( 0, btnUpgradeScrolls.bottom() + GAP, WIDTH, BTN_HEIGHT );
