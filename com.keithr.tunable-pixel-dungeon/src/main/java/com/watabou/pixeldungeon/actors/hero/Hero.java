@@ -1435,4 +1435,13 @@ public class Hero extends Char {
 	public static interface Doom {
 		public void onDeath();
 	}
+
+	public boolean sleeping() {
+		return waitForEvent || restoreHealth;
+	}
+
+	public void wakeup() {
+		waitForEvent = false;
+		restoreHealth = false;
+	}
 }

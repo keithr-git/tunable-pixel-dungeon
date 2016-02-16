@@ -355,7 +355,7 @@ public class GameScene extends PixelScene {
 			log.newLine();
 		}
 		
-		cellSelector.enabled = Dungeon.hero.ready || Dungeon.hero.waitForEvent;
+		cellSelector.enabled = Dungeon.hero.ready || Dungeon.hero.sleeping();
 	}
 	
 	@Override
@@ -605,10 +605,10 @@ public class GameScene extends PixelScene {
 	}
 
 	static boolean cancel() {
-		if (Dungeon.hero.curAction != null || Dungeon.hero.restoreHealth) {
+		if (Dungeon.hero.curAction != null || Dungeon.hero.sleeping()) {
 			
 			Dungeon.hero.curAction = null;
-			Dungeon.hero.restoreHealth = false;
+			Dungeon.hero.wakeup();
 			return true;
 			
 		} else {
