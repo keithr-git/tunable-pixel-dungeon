@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.actors.mobs;
 
-import java.util.HashSet;
-
 import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Challenges;
 import com.watabou.pixeldungeon.Dungeon;
@@ -42,6 +40,8 @@ import com.watabou.pixeldungeon.utils.GLog;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.util.HashSet;
 
 public abstract class Mob extends Char {
 	
@@ -467,6 +467,7 @@ public abstract class Mob extends Char {
 	private class Wandering implements AiState {
 		
 		public static final String TAG	= "WANDERING";
+		private int steps = 0;
 		
 		@Override
 		public boolean act( boolean enemyInFOV, boolean justAlerted ) {
@@ -483,11 +484,12 @@ public abstract class Mob extends Char {
 				enemySeen = false;
 				
 				int oldPos = pos;
-				if (target != -1 && getCloser( target )) {
+				if (target != -1 && ++steps < 50 && getCloser( target )) {
 					spend( 1 / speed() );
 					return moveSprite( oldPos, pos );
 				} else {
 					target = Dungeon.level.randomDestination();
+					steps = 0;
 					spend( TICK );
 				}
 				
