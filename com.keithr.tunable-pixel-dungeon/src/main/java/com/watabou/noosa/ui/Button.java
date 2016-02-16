@@ -23,7 +23,7 @@ import com.watabou.noosa.TouchArea;
 
 public class Button extends Component {
 
-	public static float longClick = 1f;
+	public static float longClick = 0.5f;
 	
 	protected TouchArea hotArea;
 	
