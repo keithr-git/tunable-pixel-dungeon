@@ -17,10 +17,6 @@
  */
 package com.watabou.pixeldungeon.actors.hero;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
 import com.watabou.noosa.audio.Sample;
@@ -29,7 +25,6 @@ import com.watabou.pixeldungeon.Badges;
 import com.watabou.pixeldungeon.Bones;
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.GamesInProgress;
-import com.watabou.pixeldungeon.PixelDungeon;
 import com.watabou.pixeldungeon.ResultDescriptions;
 import com.watabou.pixeldungeon.actors.Actor;
 import com.watabou.pixeldungeon.actors.Char;
@@ -38,6 +33,7 @@ import com.watabou.pixeldungeon.actors.buffs.Bleeding;
 import com.watabou.pixeldungeon.actors.buffs.Blindness;
 import com.watabou.pixeldungeon.actors.buffs.Buff;
 import com.watabou.pixeldungeon.actors.buffs.Burning;
+import com.watabou.pixeldungeon.actors.buffs.Charm;
 import com.watabou.pixeldungeon.actors.buffs.Combo;
 import com.watabou.pixeldungeon.actors.buffs.Cripple;
 import com.watabou.pixeldungeon.actors.buffs.Fury;
@@ -50,7 +46,6 @@ import com.watabou.pixeldungeon.actors.buffs.Paralysis;
 import com.watabou.pixeldungeon.actors.buffs.Poison;
 import com.watabou.pixeldungeon.actors.buffs.Regeneration;
 import com.watabou.pixeldungeon.actors.buffs.Roots;
-import com.watabou.pixeldungeon.actors.buffs.Charm;
 import com.watabou.pixeldungeon.actors.buffs.SnipersMark;
 import com.watabou.pixeldungeon.actors.buffs.Vertigo;
 import com.watabou.pixeldungeon.actors.buffs.Weakness;
@@ -69,9 +64,9 @@ import com.watabou.pixeldungeon.items.Item;
 import com.watabou.pixeldungeon.items.KindOfWeapon;
 import com.watabou.pixeldungeon.items.armor.Armor;
 import com.watabou.pixeldungeon.items.keys.GoldenKey;
+import com.watabou.pixeldungeon.items.keys.IronKey;
 import com.watabou.pixeldungeon.items.keys.Key;
 import com.watabou.pixeldungeon.items.keys.SkeletonKey;
-import com.watabou.pixeldungeon.items.keys.IronKey;
 import com.watabou.pixeldungeon.items.potions.Potion;
 import com.watabou.pixeldungeon.items.potions.PotionOfMight;
 import com.watabou.pixeldungeon.items.potions.PotionOfStrength;
@@ -83,10 +78,10 @@ import com.watabou.pixeldungeon.items.rings.RingOfHaste;
 import com.watabou.pixeldungeon.items.rings.RingOfShadows;
 import com.watabou.pixeldungeon.items.rings.RingOfThorns;
 import com.watabou.pixeldungeon.items.scrolls.Scroll;
+import com.watabou.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.watabou.pixeldungeon.items.scrolls.ScrollOfUpgrade;
-import com.watabou.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.watabou.pixeldungeon.items.wands.Wand;
 import com.watabou.pixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.watabou.pixeldungeon.items.weapon.missiles.MissileWeapon;
@@ -109,6 +104,10 @@ import com.watabou.pixeldungeon.windows.WndResurrect;
 import com.watabou.pixeldungeon.windows.WndTradeItem;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class Hero extends Char {
 	
@@ -139,7 +138,6 @@ public class Hero extends Char {
 	
 	private int attackSkill = 10;
 	private int defenseSkill = 5;
-	
 
 	public boolean ready = false;
 
@@ -151,7 +149,8 @@ public class Hero extends Char {
 	public Armor.Glyph killerGlyph = null;
 	
 	private Item theKey;
-	
+
+	public boolean waitForEvent = false;
 	public boolean restoreHealth = false;
 	
 	public MissileWeapon rangedWeapon = null;
@@ -204,7 +203,7 @@ public class Hero extends Char {
 		
 		bundle.put( LEVEL, lvl );
 		bundle.put( EXPERIENCE, exp );
-		
+
 		belongings.storeInBundle( bundle );
 	}
 	
@@ -386,10 +385,12 @@ public class Hero extends Char {
 		
 		if (curAction == null) {
 			
-			if (restoreHealth) {
+			if (waitForEvent || restoreHealth) {
 				if (isStarving() || HP >= HT) {
 					restoreHealth = false;
-				} else {
+				}
+
+				if (waitForEvent || restoreHealth){
 					spend( TIME_TO_REST ); next();
 					return false;
 				}
@@ -476,6 +477,7 @@ public class Hero extends Char {
 			lastAction = curAction;
 		}
 		curAction = null;
+		waitForEvent = false;
 	}
 	
 	public void resume() {
@@ -799,7 +801,18 @@ public class Hero extends Char {
 		if (!tillHealthy) {
 			sprite.showStatus( CharSprite.DEFAULT, TXT_WAIT );
 		}
-		restoreHealth = tillHealthy;
+		if (tillHealthy) {
+			if (HP == HT) {
+				waitForEvent = true;
+				restoreHealth = false;
+			} else {
+				waitForEvent = false;
+				restoreHealth = true;
+			}
+		} else {
+			waitForEvent = false;
+			restoreHealth = false;
+		}
 	}
 	
 	@Override
@@ -960,6 +973,7 @@ public class Hero extends Char {
 	}
 	
 	public boolean handle( int cell ) {
+		waitForEvent = false;
 		
 		if (cell == -1) {
 			return false;
