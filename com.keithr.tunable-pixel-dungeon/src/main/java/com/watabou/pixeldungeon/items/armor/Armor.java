@@ -231,11 +231,12 @@ public class Armor extends EquipableItem {
 	public String info() {
 		String name = name();
 		StringBuilder info = new StringBuilder( desc() );
-		
+
+		info.append(" It is tier " + tier + " armor.");
 		if (levelKnown) {
 			info.append( 
-				"\n\nThis " + name + " provides damage absorption up to " +
-				"" + Math.max( DR(), 0 ) + " points per attack. " );
+				"\n\nThis " + name + " provides average damage absorption of " +
+				(Math.max( DR(), 0 ) / 2) + " points per attack. " );
 			
 			if (STR > Dungeon.hero.STR()) {
 				
@@ -252,7 +253,7 @@ public class Armor extends EquipableItem {
 			}
 		} else {
 			info.append( 
-				"\n\nTypical " + name + " provides damage absorption up to " + typicalDR() + " points per attack " +
+				"\n\nTypical " + name + " provides average damage absorption of " + + (typicalDR() / 2) + " points per attack " +
 				" and requires " + typicalSTR() + " points of strength. " );
 			if (typicalSTR() > Dungeon.hero.STR()) {
 				info.append( "Probably this armor is too heavy for you. " );
