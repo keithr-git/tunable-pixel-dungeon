@@ -55,7 +55,7 @@ public abstract class Mob extends Char {
 	
 	public AiState SLEEPEING	= new Sleeping();
 	public AiState HUNTING		= new Hunting();
-	public AiState WANDERING	= new Wandering();
+	public Wandering WANDERING	= new Wandering();
 	public AiState FLEEING		= new Fleeing();
 	public AiState PASSIVE		= new Passive();
 	public AiState state = SLEEPEING;
@@ -488,8 +488,7 @@ public abstract class Mob extends Char {
 					spend( 1 / speed() );
 					return moveSprite( oldPos, pos );
 				} else {
-					target = Dungeon.level.randomDestination();
-					steps = 0;
+					target = randomDestination();
 					spend( TICK );
 				}
 				
@@ -501,6 +500,11 @@ public abstract class Mob extends Char {
 		public String status() {
 			return Utils.format( "This %s is wandering", name );
 		}
+
+                public int randomDestination() {
+                    steps = 0;
+                    return Dungeon.level.randomDestination();
+                }
 	}
 	
 	private class Hunting implements AiState {
@@ -530,7 +534,7 @@ public abstract class Mob extends Char {
 					
 					spend( TICK );
 					state = WANDERING;
-					target = Dungeon.level.randomDestination();
+					target = WANDERING.randomDestination();
 					return true;
 				}
 			}
