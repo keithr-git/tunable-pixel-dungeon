@@ -21,7 +21,6 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class Random {
-
 	public static float Float( float min, float max ) {
 		return (float)(min + Math.random() * (max - min)); 
 	}
@@ -43,11 +42,15 @@ public class Random {
 	}
 	
 	public static int IntRange( int min, int max ) {
-		return min + (int)(Math.random() * (max - min + 1));
+		return Int(min, max + 1);
 	}
-	
+
+	public static int NormalInt( int min, int max ) {
+		return min + (int)((Math.random() + Math.random() + Math.random() + Math.random()) * (max - min) / 4f);
+	}
+
 	public static int NormalIntRange( int min, int max ) {
-		return min + (int)((Math.random() + Math.random()) * (max - min + 1) / 2f);
+		return NormalInt(min, max + 1);
 	}
 	
 	public static int chances( float[] chances ) {

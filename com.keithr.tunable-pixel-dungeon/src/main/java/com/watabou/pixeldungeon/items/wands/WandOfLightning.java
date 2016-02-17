@@ -82,7 +82,7 @@ public class WandOfLightning extends Wand {
 		}
 		
 		if (ns.size() > 0) {
-			hit( Random.element( ns ), Random.Int( damage / 2, damage ) );
+			hit( Random.element( ns ), Random.NormalInt( damage / 2, damage ) );
 		}
 	}
 	
@@ -97,7 +97,7 @@ public class WandOfLightning extends Wand {
 			
 			affected.clear();
 			int lvl = power();
-			hit( ch, Random.Int( 5 + lvl / 2, 10 + lvl ) );
+			hit( ch, Random.NormalInt( 5 + lvl / 2, 10 + lvl ) );
 
 		} else {
 			

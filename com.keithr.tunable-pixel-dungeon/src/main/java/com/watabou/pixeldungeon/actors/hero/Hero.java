@@ -320,7 +320,7 @@ public class Hero extends Char {
 		if (wep != null) {	
 			dmg = wep.damageRoll( this );
 		} else {
-			dmg = STR() > 10 ? Random.IntRange( 1, STR() - 9 ) : 1;
+			dmg = STR() > 10 ? Random.NormalIntRange( 1, STR() - 9 ) : 1;
 		}
 		return buff( Fury.class ) != null ? (int)(dmg * 1.5f) : dmg;
 	}
