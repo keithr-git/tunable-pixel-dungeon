@@ -17,8 +17,6 @@
  */
 package com.watabou.pixeldungeon.actors.mobs.npcs;
 
-import java.util.HashSet;
-
 import com.watabou.pixeldungeon.Dungeon;
 import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.buffs.Poison;
@@ -28,6 +26,8 @@ import com.watabou.pixeldungeon.sprites.BeeSprite;
 import com.watabou.pixeldungeon.utils.Utils;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import java.util.HashSet;
 
 public class Bee extends NPC {
 	
@@ -146,7 +146,7 @@ public class Bee extends NPC {
 		return IMMUNITIES;
 	}
 	
-	private class Wandering implements AiState {
+	private class Wandering extends Mob.Wandering {
 
 		@Override
 		public boolean act( boolean enemyInFOV, boolean justAlerted ) {

@@ -464,7 +464,7 @@ public abstract class Mob extends Char {
 		}
 	}
 	
-	private class Wandering implements AiState {
+	protected class Wandering implements AiState {
 		
 		public static final String TAG	= "WANDERING";
 		private int steps = 0;
