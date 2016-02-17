@@ -141,7 +141,7 @@ public abstract class Char extends Actor {
 			
 			// FIXME
 			int dr = this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass == HeroSubClass.SNIPER ? 0 :
-				Random.IntRange( 0, enemy.dr() );
+				Random.NormalIntRange( 0, enemy.dr() );
 			
 			int dmg = damageRoll();
 			int effectiveDamage = Math.max( dmg - dr, 0 );
