@@ -26,6 +26,7 @@ import com.watabou.pixeldungeon.actors.Char;
 import com.watabou.pixeldungeon.actors.hero.Belongings;
 import com.watabou.pixeldungeon.actors.mobs.Mob;
 import com.watabou.pixeldungeon.items.Item;
+import com.watabou.pixeldungeon.levels.Level;
 import com.watabou.pixeldungeon.mechanics.Ballistica;
 import com.watabou.pixeldungeon.scenes.GameScene;
 import com.watabou.pixeldungeon.scenes.PixelScene;
@@ -200,13 +201,16 @@ public class QuickSlot extends Button implements WndBag.Listener {
 		
 		if (!targeting) {
 			int n = Dungeon.hero.visibleEnemies();
+			int closest = Level.LENGTH;
+
 			for (int i=0; i < n; i++) {
 				Mob enemy = Dungeon.hero.visibleEnemy( i );
 				int pos = Ballistica.cast( Dungeon.hero.pos, enemy.pos, false, true );
-				if (pos == enemy.pos) { 
+				int distance = Level.straightDistance( Dungeon.hero.pos,pos );
+				if (pos == enemy.pos && distance < closest) {
 					lastTarget = enemy;
 					targeting = true;
-					break;
+					closest = distance;
 				}
 			}
 		}

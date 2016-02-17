@@ -17,12 +17,6 @@
  */
 package com.watabou.pixeldungeon.levels;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-
 import com.watabou.noosa.Scene;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.pixeldungeon.Assets;
@@ -62,7 +56,14 @@ import com.watabou.pixeldungeon.levels.features.Chasm;
 import com.watabou.pixeldungeon.levels.features.Door;
 import com.watabou.pixeldungeon.levels.features.HighGrass;
 import com.watabou.pixeldungeon.levels.painters.Painter;
-import com.watabou.pixeldungeon.levels.traps.*;
+import com.watabou.pixeldungeon.levels.traps.AlarmTrap;
+import com.watabou.pixeldungeon.levels.traps.FireTrap;
+import com.watabou.pixeldungeon.levels.traps.GrippingTrap;
+import com.watabou.pixeldungeon.levels.traps.LightningTrap;
+import com.watabou.pixeldungeon.levels.traps.ParalyticTrap;
+import com.watabou.pixeldungeon.levels.traps.PoisonTrap;
+import com.watabou.pixeldungeon.levels.traps.SummoningTrap;
+import com.watabou.pixeldungeon.levels.traps.ToxicTrap;
 import com.watabou.pixeldungeon.mechanics.ShadowCaster;
 import com.watabou.pixeldungeon.plants.Plant;
 import com.watabou.pixeldungeon.scenes.GameScene;
@@ -71,6 +72,12 @@ import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public abstract class Level implements Bundlable {
 	
@@ -878,7 +885,18 @@ public abstract class Level implements Bundlable {
 		int by = b / WIDTH;
 		return Math.max( Math.abs( ax - bx ), Math.abs( ay - by ) );
 	}
-	
+
+	public static int straightDistance( int a, int b ) {
+		int ax = a % WIDTH;
+		int ay = a / WIDTH;
+		int bx = b % WIDTH;
+		int by = b / WIDTH;
+		int x = Math.abs(ax - bx);
+		int y = Math.abs(ay - by);
+
+		return (int) Math.floor(Math.sqrt((x * x) + (y * y)));
+	}
+
 	public static boolean adjacent( int a, int b ) {
 		int diff = Math.abs( a - b );
 		return diff == 1 || diff == WIDTH || diff == WIDTH + 1 || diff == WIDTH - 1;
