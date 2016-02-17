@@ -386,7 +386,9 @@ public class Hero extends Char {
 		if (curAction == null) {
 			
 			if (waitForEvent || restoreHealth) {
-				if (isStarving() || HP >= HT) {
+				if (isStarving()) {
+                                    wakeup();
+                                } else if (HP >= HT) {
 					restoreHealth = false;
 				}
 
@@ -401,7 +403,7 @@ public class Hero extends Char {
 			
 		} else {
 			
-			restoreHealth = false;
+			wakeup();
 			
 			ready = false;
 			
@@ -477,7 +479,7 @@ public class Hero extends Char {
 			lastAction = curAction;
 		}
 		curAction = null;
-		waitForEvent = false;
+                wakeup();
 	}
 	
 	public void resume() {
@@ -881,7 +883,7 @@ public class Hero extends Char {
 	
 	@Override
 	public void damage( int dmg, Object src ) {		
-		restoreHealth = false;
+		wakeup();
 		super.damage( dmg, src );
 		
 		if (subClass == HeroSubClass.BERSERKER && 0 < HP && HP <= HT * Fury.LEVEL) {
@@ -905,7 +907,6 @@ public class Hero extends Char {
 		
 		if (newMob) {
 			interrupt();
-			restoreHealth = false;
 		}
 		
 		visibleEnemies = visible;
