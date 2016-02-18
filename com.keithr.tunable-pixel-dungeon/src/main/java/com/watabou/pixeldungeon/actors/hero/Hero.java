@@ -386,7 +386,7 @@ public class Hero extends Char {
 		if (curAction == null) {
 			
 			if (waitForEvent || restoreHealth) {
-				if (isStarving()) {
+				if (!visibleEnemies.isEmpty() || isStarving()) {
                                     wakeup();
                                 } else if (HP >= HT) {
 					restoreHealth = false;
@@ -799,6 +799,8 @@ public class Hero extends Char {
 	}
 	
 	public void rest( boolean tillHealthy ) {
+		if (tillHealthy && !visibleEnemies.isEmpty())
+			return;
 		spendAndNext( TIME_TO_REST );
 		if (!tillHealthy) {
 			sprite.showStatus( CharSprite.DEFAULT, TXT_WAIT );
