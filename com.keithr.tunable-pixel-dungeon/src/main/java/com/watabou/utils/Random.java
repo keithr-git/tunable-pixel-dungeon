@@ -46,7 +46,7 @@ public class Random {
 	}
 
 	public static int NormalInt( int min, int max ) {
-		return min + (int)((Math.random() + Math.random() + Math.random() + Math.random()) * (max - min) / 4f);
+		return min + (int)((Math.random() + Math.random()) * (max - min) / 2f);
 	}
 
 	public static int NormalIntRange( int min, int max ) {
